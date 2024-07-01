@@ -1,60 +1,77 @@
 package cifor.icraf.flashcardsxml.flashcard.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import cifor.icraf.flashcardsxml.R
+import cifor.icraf.flashcardsxml.flashcard.domain.entity.FlashcardEntity
+import cifor.icraf.flashcardsxml.flashcard.ui.viewmodel.FlashcardsXMLViewModel
+import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.textfield.TextInputEditText
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [FlashcardEditScreenFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FlashcardEditScreenFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var flashcardsXMLViewModel: FlashcardsXMLViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_flashcard_edit_screen, container, false)
+
+        val rootView = inflater.inflate(R.layout.fragment_flashcard_edit_screen, container, false)
+
+        // Initialize ViewModel
+        flashcardsXMLViewModel = ViewModelProvider(this)[FlashcardsXMLViewModel::class.java]
+
+        // Inflate the edit screen layout
+        //val editScreenView = inflater.inflate(R.layout.flashcard_edit_screen, container, false)
+        //container?.addView(editScreenView)
+
+        // Setup toolbar
+        val toolbar = rootView.findViewById<MaterialToolbar>(R.id.topAppBar)
+        toolbar.setNavigationOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
+        // Setup buttons
+        val btnBack = toolbar.findViewById<ImageButton>(R.id.btnBack)
+        val btnDone = toolbar.findViewById<ImageButton>(R.id.btnDone)
+
+        // Get references to text fields
+        val editTextFlashcardTerm = rootView.findViewById<TextInputEditText>(R.id.editTextFlashcardTerm)
+        val editTextFlashcardDefinition = rootView.findViewById<TextInputEditText>(R.id.editTextFlashcardDefinition)
+
+        // Handle back button click
+        btnBack.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
+
+        // Handle done button click
+        btnDone.setOnClickListener {
+            val term = editTextFlashcardTerm.text.toString().trim()
+            val definition = editTextFlashcardDefinition.text.toString().trim()
+
+            if (term.isEmpty() || definition.isEmpty()) {
+                Toast.makeText(requireContext(), "Please enter a term and definition", Toast.LENGTH_SHORT).show()
+            } else {
+                val flashcardEntity = FlashcardEntity(
+                    flashCardTerm = term,
+                    flashCardDefinition = definition,
+                    flashcardSubjectName = "Your Subject Name" // Replace with actual subject name logic
+                )
+                flashcardsXMLViewModel.upsertFlashcard(flashcardEntity)
+                requireActivity().onBackPressedDispatcher.onBackPressed()
+            }
+        }
+
+        return rootView
+
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FlashcardEditScreenFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FlashcardEditScreenFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }
