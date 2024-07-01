@@ -1,14 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<!-- fragment_flashcards.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".flashcard.ui.fragments.FlashcardsScreenFragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- Top App Bar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/flashcardsScreenTopAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorSurface"
+        android:title="@string/app_name"
+        android:titleTextColor="?attr/colorOnSurface"
+        android:titleTextAppearance="?android:attr/textAppearanceLarge"
+        android:contentInsetStart="0dp"
+        android:contentInsetLeft="0dp"
+        android:contentInsetStartWithNavigation="0dp"
+        android:contentInsetEnd="0dp"
+        android:contentInsetRight="0dp"
+        android:contentInsetEndWithActions="0dp"
+        android:elevation="4dp">
+
+        <!-- Navigation Icon (Back Button) -->
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Arrow Back"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/md_theme_primary" />
+
+        <!-- Add Flashcard Button -->
+        <ImageButton
+            android:id="@+id/btnAddFlashcard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Add Flashcard"
+            android:src="@drawable/ic_add"
+            app:tint="?attr/colorOnSurface"
+            android:layout_gravity="end|center_vertical"/>
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <!-- ViewPager for Flashcards -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_below="@id/topAppBar"/>
 
-</FrameLayout>
+</RelativeLayout>
