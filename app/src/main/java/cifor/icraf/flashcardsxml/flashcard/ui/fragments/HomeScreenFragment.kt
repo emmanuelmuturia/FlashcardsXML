@@ -9,11 +9,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import cifor.icraf.flashcardsxml.databinding.FragmentHomeScreenBinding
 import cifor.icraf.flashcardsxml.flashcard.ui.adapters.SubjectAdapter
 import cifor.icraf.flashcardsxml.flashcard.ui.viewmodel.FlashcardsXMLViewModel
 import kotlinx.coroutines.launch
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 class HomeScreenFragment : Fragment() {
 
@@ -55,8 +58,11 @@ class HomeScreenFragment : Fragment() {
     private fun setupRecyclerView() {
 
         subjectAdapter = SubjectAdapter(
-            onSubjectClicked = {
-                // Navigate to SubjectEditScreen...
+            onSubjectClicked = { subjectWithFlashcards ->
+                val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToFlashcardsScreenFragment(subjectWithFlashcards = Json.encodeToString(
+                    value = subjectWithFlashcards
+                ))
+                findNavController().navigate(action)
             },
             onDeleteSubject = { subjectWithFlashcards ->
                 flashcardsXMLViewModel.deleteSubject(subjectEntity = subjectWithFlashcards.subjectEntity)

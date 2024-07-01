@@ -8,6 +8,7 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import cifor.icraf.flashcardsxml.R
 import cifor.icraf.flashcardsxml.flashcard.domain.entity.FlashcardEntity
 import cifor.icraf.flashcardsxml.flashcard.ui.viewmodel.FlashcardsXMLViewModel
@@ -29,14 +30,10 @@ class FlashcardEditScreenFragment : Fragment() {
         // Initialize ViewModel
         flashcardsXMLViewModel = ViewModelProvider(this)[FlashcardsXMLViewModel::class.java]
 
-        // Inflate the edit screen layout
-        //val editScreenView = inflater.inflate(R.layout.flashcard_edit_screen, container, false)
-        //container?.addView(editScreenView)
-
         // Setup toolbar
         val toolbar = rootView.findViewById<MaterialToolbar>(R.id.topAppBar)
         toolbar.setNavigationOnClickListener {
-            requireActivity().onBackPressed()
+            findNavController().navigateUp()
         }
 
         // Setup buttons
@@ -49,7 +46,7 @@ class FlashcardEditScreenFragment : Fragment() {
 
         // Handle back button click
         btnBack.setOnClickListener {
-            requireActivity().onBackPressedDispatcher.onBackPressed()
+            findNavController().navigateUp()
         }
 
         // Handle done button click
@@ -66,7 +63,8 @@ class FlashcardEditScreenFragment : Fragment() {
                     flashcardSubjectName = "Your Subject Name" // Replace with actual subject name logic
                 )
                 flashcardsXMLViewModel.upsertFlashcard(flashcardEntity)
-                requireActivity().onBackPressedDispatcher.onBackPressed()
+                val action = FlashcardEditScreenFragmentDirections.actionFlashcardEditScreenFragmentToFlashcardsScreenFragment()
+                findNavController().navigate(action)
             }
         }
 

@@ -6,10 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import cifor.icraf.flashcardsxml.R
 import cifor.icraf.flashcardsxml.flashcard.domain.entity.FlashcardEntity
@@ -39,7 +41,9 @@ class FlashcardsScreenFragment : Fragment() {
         viewPager = rootView.findViewById(R.id.viewPager)
         val toolBar = rootView.findViewById<MaterialToolbar>(R.id.flashcardsScreenTopAppBar)
 
-        toolBar.setNavigationOnClickListener { requireActivity().onBackPressed() }
+        toolBar.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
         toolBar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.btnAddFlashcard -> {
@@ -60,6 +64,12 @@ class FlashcardsScreenFragment : Fragment() {
                     }
                 }
             }
+        }
+
+        val addFlashcardsButton = rootView.findViewById<ImageButton>(R.id.btnAddFlashcard)
+        addFlashcardsButton.setOnClickListener {
+            val action = FlashcardsScreenFragmentDirections.actionFlashcardsScreenFragmentToFlashcardEditScreenFragment()
+            findNavController().navigate(action)
         }
 
         viewPager = view?.findViewById(R.id.viewPager)!!

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import cifor.icraf.flashcardsxml.R
 import cifor.icraf.flashcardsxml.flashcard.domain.entity.SubjectEntity
 import com.google.android.material.appbar.MaterialToolbar
@@ -27,7 +28,9 @@ class SubjectEditScreenFragment : Fragment() {
         val toolBar = rootView.findViewById<MaterialToolbar>(
             R.id.topAppBar
         )
-        toolBar.setNavigationOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
+        toolBar.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
         toolBar.setOnMenuItemClickListener { item ->
             when(item.itemId) {
                 R.id.btnDone -> {
@@ -37,6 +40,8 @@ class SubjectEditScreenFragment : Fragment() {
                     } else {
                         val parentActivity = requireActivity() as SubjectEditListener
                         parentActivity.onCompleteClick(subjectEntity = SubjectEntity(subjectName = subjectName))
+                        val action = SubjectEditScreenFragmentDirections.actionSubjectEditScreenFragmentToHomeScreenFragment()
+                        findNavController().navigate(action)
                     }
                     true
                 }
