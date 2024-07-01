@@ -1,14 +1,67 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<!-- subject_edit_fragment.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".flashcard.ui.fragments.SubjectEditScreenFragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- Top App Bar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorSurface"
+        android:title="Edit Subject"
+        android:titleTextColor="?attr/colorOnSurface"
+        android:titleTextAppearance="?android:attr/textAppearanceLarge"
+        android:subtitleTextAppearance="?android:attr/textAppearanceMedium"
+        android:contentInsetStart="0dp"
+        android:contentInsetLeft="0dp"
+        android:contentInsetStartWithNavigation="0dp"
+        android:contentInsetEnd="0dp"
+        android:contentInsetRight="0dp"
+        android:contentInsetEndWithActions="0dp"
+        android:elevation="4dp">
 
-</FrameLayout>
+        <!-- Navigation Icon (Back Button) -->
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Arrow Back"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="?attr/colorOnSurface" />
+
+        <!-- Done Button -->
+        <ImageButton
+            android:id="@+id/btnDone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="14.dp"
+            android:contentDescription="Done"
+            android:src="@drawable/ic_done"
+            android:layout_gravity="end|center_vertical"
+            app:tint="@color/md_theme_onBackground" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <!-- Subject Name Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/topAppBar"
+        android:layout_margin="16dp"
+        android:hint="Subject Name"
+        app:hintTextColor="?attr/colorOnBackground"
+        app:shapeAppearanceOverlay="@style/RoundedCornerShape"
+        android:textColorHint="?attr/colorOnBackground">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextSubjectName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</RelativeLayout>
