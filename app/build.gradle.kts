@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "cifor.icraf.flashcardsxml"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -37,6 +37,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    buildFeatures {
+        viewBinding = true
     }
 }
 
@@ -66,5 +69,6 @@ dependencies {
 
     androidTestImplementation(dependencyNotation = libs.androidx.junit)
     androidTestImplementation(dependencyNotation = libs.androidx.espresso.core)
+    implementation(kotlin("script-runtime"))
 
 }
