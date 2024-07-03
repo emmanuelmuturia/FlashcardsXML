@@ -17,58 +17,13 @@ import com.google.android.material.textfield.TextInputEditText
 
 class FlashcardEditScreenFragment : Fragment() {
 
-    private lateinit var flashcardsXMLViewModel: FlashcardsXMLViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        val rootView = inflater.inflate(R.layout.fragment_flashcard_edit_screen, container, false)
 
-        // Initialize ViewModel
-        flashcardsXMLViewModel = ViewModelProvider(this)[FlashcardsXMLViewModel::class.java]
-
-        // Setup toolbar
-        val toolbar = rootView.findViewById<MaterialToolbar>(R.id.topAppBar)
-        toolbar.setNavigationOnClickListener {
-            findNavController().navigateUp()
-        }
-
-        // Setup buttons
-        val btnBack = toolbar.findViewById<ImageButton>(R.id.btnBack)
-        val btnDone = toolbar.findViewById<ImageButton>(R.id.btnDone)
-
-        // Get references to text fields
-        val editTextFlashcardTerm = rootView.findViewById<TextInputEditText>(R.id.editTextFlashcardTerm)
-        val editTextFlashcardDefinition = rootView.findViewById<TextInputEditText>(R.id.editTextFlashcardDefinition)
-
-        // Handle back button click
-        btnBack.setOnClickListener {
-            findNavController().navigateUp()
-        }
-
-        // Handle done button click
-        btnDone.setOnClickListener {
-            val term = editTextFlashcardTerm.text.toString().trim()
-            val definition = editTextFlashcardDefinition.text.toString().trim()
-
-            if (term.isEmpty() || definition.isEmpty()) {
-                Toast.makeText(requireContext(), "Please enter a term and definition", Toast.LENGTH_SHORT).show()
-            } else {
-                val flashcardEntity = FlashcardEntity(
-                    flashCardTerm = term,
-                    flashCardDefinition = definition,
-                    flashcardSubjectName = "Your Subject Name" // Replace with actual subject name logic
-                )
-                flashcardsXMLViewModel.upsertFlashcard(flashcardEntity)
-                val action = FlashcardEditScreenFragmentDirections.actionFlashcardEditScreenFragmentToFlashcardsScreenFragment()
-                findNavController().navigate(action)
-            }
-        }
-
-        return rootView
 
     }
 

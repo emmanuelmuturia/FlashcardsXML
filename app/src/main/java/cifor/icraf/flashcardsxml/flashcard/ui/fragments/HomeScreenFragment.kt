@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -20,66 +21,14 @@ import kotlinx.serialization.json.Json
 
 class HomeScreenFragment : Fragment() {
 
-    private var _binding: FragmentHomeScreenBinding? = null
-    private val binding get() = _binding!!
-
-    private val flashcardsXMLViewModel by viewModels<FlashcardsXMLViewModel>()
-    private lateinit var subjectAdapter: SubjectAdapter
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentHomeScreenBinding.inflate(inflater, container, false)
-        val view = binding.root
 
-        setupRecyclerView()
 
-        observeFlashcardsXMLViewModel()
-
-        return view
-
-    }
-
-    private fun observeFlashcardsXMLViewModel() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(state = Lifecycle.State.STARTED) {
-                flashcardsXMLViewModel.subjectUIState.collect { uiState ->
-                    uiState.subjects.let { subjectsWithFlashcards ->
-                        subjectAdapter.addNewList(subjectsWithFlashcards = subjectsWithFlashcards)
-                    }
-                }
-            }
-        }
-    }
-
-    private fun setupRecyclerView() {
-
-        subjectAdapter = SubjectAdapter(
-            onSubjectClicked = { subjectWithFlashcards ->
-                val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToFlashcardsScreenFragment(subjectWithFlashcards = Json.encodeToString(
-                    value = subjectWithFlashcards
-                ))
-                findNavController().navigate(action)
-            },
-            onDeleteSubject = { subjectWithFlashcards ->
-                flashcardsXMLViewModel.deleteSubject(subjectEntity = subjectWithFlashcards.subjectEntity)
-            },
-            subjects = emptyList()
-        )
-
-        binding.recyclerViewSubjects.apply {
-            adapter = subjectAdapter
-            layoutManager = LinearLayoutManager(requireContext())
-        }
-
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
 }

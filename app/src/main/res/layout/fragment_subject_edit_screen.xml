@@ -1,28 +1,30 @@
 <!-- subject_edit_fragment.xml -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Top App Bar -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:layout_marginStart="4dp"
         android:background="?attr/colorSurface"
-        android:title="Edit Subject"
-        android:titleTextColor="?attr/colorOnSurface"
-        android:titleTextAppearance="?android:attr/textAppearanceLarge"
-        android:subtitleTextAppearance="?android:attr/textAppearanceMedium"
         android:contentInsetStart="0dp"
         android:contentInsetLeft="0dp"
-        android:contentInsetStartWithNavigation="0dp"
         android:contentInsetEnd="0dp"
         android:contentInsetRight="0dp"
         android:contentInsetEndWithActions="0dp"
-        android:elevation="4dp">
+        android:contentInsetStartWithNavigation="0dp"
+        android:elevation="4dp"
+        android:subtitleTextAppearance="?android:attr/textAppearanceMedium"
+        android:title="Edit Subject"
+        android:titleTextAppearance="?android:attr/textAppearanceLarge"
+        android:titleTextColor="?attr/colorOnSurface"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Navigation Icon (Back Button) -->
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
@@ -36,32 +38,25 @@
             android:id="@+id/btnDone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="14.dp"
-            android:contentDescription="Done"
-            android:src="@drawable/ic_done"
             android:layout_gravity="end|center_vertical"
+            android:contentDescription="Done"
+            android:padding="14.dp"
+            android:src="@drawable/ic_done"
             app:tint="@color/md_theme_onBackground" />
 
     </com.google.android.material.appbar.MaterialToolbar>
 
-    <!-- Subject Name Input -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editTextSubjectName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/topAppBar"
-        android:layout_margin="16dp"
-        android:hint="Subject Name"
-        app:hintTextColor="?attr/colorOnBackground"
-        app:shapeAppearanceOverlay="@style/RoundedCornerShape"
-        android:textColorHint="?attr/colorOnBackground">
+        android:layout_marginTop="300dp"
+        android:hint="Enter Subject Name"
+        android:inputType="textCapSentences"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topAppBar"
+        app:layout_constraintVertical_bias="0.0" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextSubjectName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textCapSentences"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

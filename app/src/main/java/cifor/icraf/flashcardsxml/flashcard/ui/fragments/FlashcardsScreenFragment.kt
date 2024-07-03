@@ -21,82 +21,14 @@ import kotlinx.coroutines.launch
 
 class FlashcardsScreenFragment : Fragment() {
 
-    private lateinit var viewPager: ViewPager2
-    private lateinit var flashcardsPagerAdapter: FlashcardsPagerAdapter
-    private val flashcardsXMLViewModel: FlashcardsXMLViewModel by viewModels<FlashcardsXMLViewModel>()
-    private var flashcards = emptyList<FlashcardEntity>()
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        val rootView = inflater.inflate(
-            R.layout.fragment_flashcards_screen,
-            container,
-            false
-        )
 
-        viewPager = rootView.findViewById(R.id.viewPager)
-        val toolBar = rootView.findViewById<MaterialToolbar>(R.id.flashcardsScreenTopAppBar)
 
-        toolBar.setNavigationOnClickListener {
-            findNavController().navigateUp()
-        }
-        toolBar.setOnMenuItemClickListener { item ->
-            when (item.itemId) {
-                R.id.btnAddFlashcard -> {
-                    val parentActivity = requireActivity() as? FlashcardsListener
-                    parentActivity?.onAddNewFlashcardClicked()
-                    true
-                }
-
-                else -> false
-            }
-        }
-
-        lifecycleScope.launch {
-            repeatOnLifecycle(state = Lifecycle.State.STARTED) {
-                flashcardsXMLViewModel.subjectUIState.collect { uiState ->
-                    uiState.subjects.map { subjects ->
-                        flashcards = subjects.flashcards
-                    }
-                }
-            }
-        }
-
-        val addFlashcardsButton = rootView.findViewById<ImageButton>(R.id.btnAddFlashcard)
-        addFlashcardsButton.setOnClickListener {
-            val action = FlashcardsScreenFragmentDirections.actionFlashcardsScreenFragmentToFlashcardEditScreenFragment()
-            findNavController().navigate(action)
-        }
-
-        viewPager = view?.findViewById(R.id.viewPager)!!
-        flashcardsPagerAdapter = FlashcardsPagerAdapter(
-            flashcards = flashcards
-        )
-        viewPager.adapter = flashcardsPagerAdapter
-
-        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                // Reset card to front side when page changes
-                (viewPager.getChildAt(0) as? FlashcardsPagerAdapter.FlashcardViewHolder)?.flipCard()
-            }
-        })
-
-        return rootView
-
-    }
-
-    interface FlashcardsListener {
-        fun onAddNewFlashcardClicked()
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance() = FlashcardsScreenFragment()
     }
 
 }
