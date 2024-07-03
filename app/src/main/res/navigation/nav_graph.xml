@@ -9,17 +9,36 @@
         android:id="@+id/homeScreenFragment"
         android:name="cifor.icraf.flashcardsxml.flashcard.ui.fragments.HomeScreenFragment"
         android:label="fragment_home_screen"
-        tools:layout="@layout/fragment_home_screen" />
+        tools:layout="@layout/fragment_home_screen" >
+        <action
+            android:id="@+id/navigateToSubjectEditScreen"
+            app:destination="@id/subjectEditScreenFragment" />
+    </fragment>
     <fragment
         android:id="@+id/subjectEditScreenFragment"
         android:name="cifor.icraf.flashcardsxml.flashcard.ui.fragments.SubjectEditScreenFragment"
-        android:label="SubjectEditScreenFragment" />
+        android:label="SubjectEditScreenFragment" >
+        <action
+            android:id="@+id/navigateToHomeScreen"
+            app:destination="@id/homeScreenFragment" />
+        <action
+            android:id="@+id/navigateToFlashcardsScreen"
+            app:destination="@id/flashcardsScreenFragment" />
+    </fragment>
     <fragment
         android:id="@+id/flashcardsScreenFragment"
         android:name="cifor.icraf.flashcardsxml.flashcard.ui.fragments.FlashcardsScreenFragment"
-        android:label="FlashcardsScreenFragment" />
+        android:label="FlashcardsScreenFragment" >
+        <action
+            android:id="@+id/navigateToFlashcardsEditScreen"
+            app:destination="@id/flashcardEditScreenFragment" />
+    </fragment>
     <fragment
         android:id="@+id/flashcardEditScreenFragment"
         android:name="cifor.icraf.flashcardsxml.flashcard.ui.fragments.FlashcardEditScreenFragment"
-        android:label="FlashcardEditScreenFragment" />
+        android:label="FlashcardEditScreenFragment" >
+        <action
+            android:id="@+id/navigateBackToFlashcardsScreen"
+            app:destination="@id/flashcardsScreenFragment" />
+    </fragment>
 </navigation>
