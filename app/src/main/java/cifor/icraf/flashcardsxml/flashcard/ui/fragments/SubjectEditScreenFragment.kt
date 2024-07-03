@@ -1,18 +1,13 @@
 package cifor.icraf.flashcardsxml.flashcard.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
+import android.widget.ImageButton
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import cifor.icraf.flashcardsxml.R
-import cifor.icraf.flashcardsxml.flashcard.domain.entity.SubjectEntity
-import cifor.icraf.flashcardsxml.flashcard.ui.viewmodel.FlashcardsXMLViewModel
-import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.textfield.TextInputEditText
 
 class SubjectEditScreenFragment : Fragment() {
 
@@ -22,11 +17,33 @@ class SubjectEditScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(
+        val subjectEditScreen = inflater.inflate(
             R.layout.fragment_subject_edit_screen,
             container,
             false
         )
+
+        val subjectEditScreenBackButton = subjectEditScreen.findViewById<ImageButton>(
+            R.id.flashcardEditScreenBackButton
+        )
+
+        val subjectEditScreenDoneButton = subjectEditScreen.findViewById<ImageButton>(
+            R.id.flashcardEditScreenDoneButton
+        )
+
+        subjectEditScreenBackButton.setOnClickListener {
+            subjectEditScreen.findNavController().navigateUp()
+        }
+
+        subjectEditScreenDoneButton.setOnClickListener {
+            subjectEditScreen.findNavController().navigate(
+                R.id.navigateBackToHomeScreen
+            )
+        }
+
+        // Configure the EditText...
+
+        return subjectEditScreen
 
     }
 

@@ -22,7 +22,7 @@
         app:title="@string/app_name" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_add_subject"
+        android:id="@+id/addSubjectButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"

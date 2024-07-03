@@ -5,15 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.findNavController
 import cifor.icraf.flashcardsxml.R
-import cifor.icraf.flashcardsxml.flashcard.domain.entity.FlashcardEntity
-import cifor.icraf.flashcardsxml.flashcard.ui.viewmodel.FlashcardsXMLViewModel
-import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.textfield.TextInputEditText
 
 class FlashcardEditScreenFragment : Fragment() {
 
@@ -23,11 +17,29 @@ class FlashcardEditScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(
+        val flashcardEditScreen = inflater.inflate(
             R.layout.fragment_flashcard_edit_screen,
             container,
             false
         )
+
+        val flashcardEditScreenBackButton = flashcardEditScreen.findViewById<ImageButton>(
+            R.id.flashcardEditScreenBackButton
+        )
+
+        val flashcardEditScreenDoneButton = flashcardEditScreen.findViewById<ImageButton>(
+            R.id.flashcardEditScreenDoneButton
+        )
+
+        flashcardEditScreenBackButton.setOnClickListener {
+            flashcardEditScreen.findNavController().navigateUp()
+        }
+
+        flashcardEditScreenDoneButton.setOnClickListener {
+            flashcardEditScreen.findNavController().navigate(
+                R.id.navigateBackToFlashcardsScreen
+            )
+        }
 
     }
 

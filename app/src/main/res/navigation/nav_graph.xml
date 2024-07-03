@@ -19,7 +19,7 @@
         android:name="cifor.icraf.flashcardsxml.flashcard.ui.fragments.SubjectEditScreenFragment"
         android:label="SubjectEditScreenFragment" >
         <action
-            android:id="@+id/navigateToHomeScreen"
+            android:id="@+id/navigateBackToHomeScreen"
             app:destination="@id/homeScreenFragment" />
         <action
             android:id="@+id/navigateToFlashcardsScreen"

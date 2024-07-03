@@ -4,21 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.navigation.findNavController
 import cifor.icraf.flashcardsxml.R
-import cifor.icraf.flashcardsxml.databinding.FragmentHomeScreenBinding
-import cifor.icraf.flashcardsxml.flashcard.ui.adapters.SubjectAdapter
-import cifor.icraf.flashcardsxml.flashcard.ui.viewmodel.FlashcardsXMLViewModel
-import kotlinx.coroutines.launch
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class HomeScreenFragment : Fragment() {
 
@@ -28,11 +17,23 @@ class HomeScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(
+        val homeScreen = inflater.inflate(
             R.layout.fragment_home_screen,
             container,
             false
         )
+
+        val addSubjectButton = homeScreen.findViewById<FloatingActionButton>(
+            R.id.addSubjectButton
+        )
+
+        addSubjectButton.setOnClickListener {
+            homeScreen.findNavController().navigate(
+                R.id.navigateToSubjectEditScreen
+            )
+        }
+
+        return homeScreen
 
     }
 
