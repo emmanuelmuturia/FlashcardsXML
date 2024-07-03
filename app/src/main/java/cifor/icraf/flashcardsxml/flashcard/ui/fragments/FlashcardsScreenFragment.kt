@@ -27,7 +27,11 @@ class FlashcardsScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-
+        return inflater.inflate(
+            R.layout.fragment_flashcards_screen,
+            container,
+            false
+        )
 
     }
 

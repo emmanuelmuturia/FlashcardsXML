@@ -22,7 +22,11 @@ class SubjectEditScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-
+        return inflater.inflate(
+            R.layout.fragment_subject_edit_screen,
+            container,
+            false
+        )
 
     }
 

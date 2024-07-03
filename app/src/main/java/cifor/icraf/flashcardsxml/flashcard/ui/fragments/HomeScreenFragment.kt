@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import cifor.icraf.flashcardsxml.R
 import cifor.icraf.flashcardsxml.databinding.FragmentHomeScreenBinding
 import cifor.icraf.flashcardsxml.flashcard.ui.adapters.SubjectAdapter
 import cifor.icraf.flashcardsxml.flashcard.ui.viewmodel.FlashcardsXMLViewModel
@@ -27,7 +28,11 @@ class HomeScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-
+        return inflater.inflate(
+            R.layout.fragment_home_screen,
+            container,
+            false
+        )
 
     }
 

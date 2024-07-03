@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,36 +7,31 @@
     android:orientation="vertical"
     tools:context=".flashcard.ui.fragments.HomeScreenFragment">
 
+    <!-- Button to add a new subject -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/flashcards_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/md_theme_background"
         android:elevation="7dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="@string/app_name"
         android:gravity="center"
-        />
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="@string/app_name" />
 
-    <!-- RecyclerView for displaying subjects -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_subjects"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="8dp" />
-
-    <!-- Button to add a new subject -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_add_subject"
-        android:padding="14.dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/add_new_subject_button"
         android:layout_gravity="right"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="@string/add_new_subject_button"
+        android:padding="14.dp"
         android:tint="@color/md_theme_primary"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

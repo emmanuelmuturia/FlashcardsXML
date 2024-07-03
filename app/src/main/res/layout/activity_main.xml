@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.fragment.app.FragmentContainerView
+    android:id="@+id/fragment_container_view"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:padding="14.dp"
     android:name="cifor.icraf.flashcardsxml.flashcard.ui.fragments.HomeScreenFragment"
