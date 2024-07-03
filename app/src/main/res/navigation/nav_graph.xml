@@ -19,9 +19,6 @@
         android:name="cifor.icraf.flashcardsxml.flashcard.ui.fragments.SubjectEditScreenFragment"
         android:label="SubjectEditScreenFragment" >
         <action
-            android:id="@+id/navigateBackToHomeScreen"
-            app:destination="@id/homeScreenFragment" />
-        <action
             android:id="@+id/navigateToFlashcardsScreen"
             app:destination="@id/flashcardsScreenFragment" />
     </fragment>
@@ -40,9 +37,6 @@
         android:id="@+id/flashcardEditScreenFragment"
         android:name="cifor.icraf.flashcardsxml.flashcard.ui.fragments.FlashcardEditScreenFragment"
         android:label="FlashcardEditScreenFragment" >
-        <action
-            android:id="@+id/navigateBackToFlashcardsScreen"
-            app:destination="@id/flashcardsScreenFragment" />
         <argument
             android:name="subjectEntity"
             app:argType="string" />

@@ -5,12 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import cifor.icraf.flashcardsxml.R
+import cifor.icraf.flashcardsxml.databinding.FragmentFlashcardsScreenBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class FlashcardsScreenFragment : Fragment() {
+
+    private var _binding: FragmentFlashcardsScreenBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -18,34 +24,28 @@ class FlashcardsScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val flashcardsScreen = inflater.inflate(
-            R.layout.fragment_flashcards_screen,
+        _binding = FragmentFlashcardsScreenBinding.inflate(
+            inflater,
             container,
             false
         )
 
-        val addFlashcardsButton = flashcardsScreen.findViewById<FloatingActionButton>(
-            R.id.addFlashcardButton
-        )
+        (activity as AppCompatActivity).setSupportActionBar(binding.flashcardsScreenTopAppBar)
 
-        val flashcardsScreenBackButton = flashcardsScreen.findViewById<ImageButton>(
-            R.id.flashcardEditScreenBackButton
-        )
-
-        flashcardsScreenBackButton.setOnClickListener {
-            flashcardsScreen.findNavController().navigateUp()
+        binding.flashcardsScreenBackButton.setOnClickListener {
+            this.findNavController().navigateUp()
         }
 
-        addFlashcardsButton.setOnClickListener {
+        binding.addFlashcardButton.setOnClickListener {
             val navigationAction = FlashcardsScreenFragmentDirections.navigateToFlashcardsEditScreen(
                 subjectEntity =
             )
-            flashcardsScreen.findNavController().navigate(
+            this.findNavController().navigate(
                 navigationAction
             )
         }
 
-        return flashcardsScreen
+        return binding.root
 
     }
 

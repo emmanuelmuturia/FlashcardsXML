@@ -50,6 +50,7 @@ dependencies {
     implementation(dependencyNotation = libs.material)
     implementation(dependencyNotation = libs.androidx.activity)
     implementation(dependencyNotation = libs.androidx.constraintlayout)
+    implementation(dependencyNotation = libs.livedata)
 
     implementation(dependencyNotation = libs.bundles.koin)
 

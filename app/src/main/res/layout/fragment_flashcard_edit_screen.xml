@@ -27,7 +27,7 @@
         tools:layout_editor_absoluteX="131dp">
 
         <ImageButton
-            android:id="@+id/flashcardEditScreenBackButton"
+            android:id="@+id/flashcardsEditScreenBackButton"
             style="?attr/actionButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
             app:tint="@color/md_theme_onBackground" />
 
         <ImageButton
-            android:id="@+id/flashcardEditScreenDoneButton"
+            android:id="@+id/flashcardsEditScreenDoneButton"
             style="?attr/actionButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
