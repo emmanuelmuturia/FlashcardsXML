@@ -36,8 +36,9 @@ class SubjectEditScreenFragment : Fragment() {
         }
 
         subjectEditScreenDoneButton.setOnClickListener {
+            val navigationAction = SubjectEditScreenFragmentDirections.navigateBackToHomeScreen()
             subjectEditScreen.findNavController().navigate(
-                R.id.navigateBackToHomeScreen
+                navigationAction
             )
         }
 

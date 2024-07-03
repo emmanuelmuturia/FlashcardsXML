@@ -28,8 +28,9 @@ class HomeScreenFragment : Fragment() {
         )
 
         addSubjectButton.setOnClickListener {
+            val navigationAction = HomeScreenFragmentDirections.navigateToSubjectEditScreen()
             homeScreen.findNavController().navigate(
-                R.id.navigateToSubjectEditScreen
+                navigationAction
             )
         }
 

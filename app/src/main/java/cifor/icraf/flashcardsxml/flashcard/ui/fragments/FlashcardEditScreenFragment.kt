@@ -36,8 +36,11 @@ class FlashcardEditScreenFragment : Fragment() {
         }
 
         flashcardEditScreenDoneButton.setOnClickListener {
+            val navigationAction = FlashcardEditScreenFragmentDirections.navigateBackToFlashcardsScreen(
+                subjectWithFlashcards =
+            )
             flashcardEditScreen.findNavController().navigate(
-                R.id.navigateBackToFlashcardsScreen
+                navigationAction
             )
         }
 

@@ -32,6 +32,9 @@
         <action
             android:id="@+id/navigateToFlashcardsEditScreen"
             app:destination="@id/flashcardEditScreenFragment" />
+        <argument
+            android:name="subjectWithFlashcards"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/flashcardEditScreenFragment"
@@ -40,5 +43,8 @@
         <action
             android:id="@+id/navigateBackToFlashcardsScreen"
             app:destination="@id/flashcardsScreenFragment" />
+        <argument
+            android:name="subjectEntity"
+            app:argType="string" />
     </fragment>
 </navigation>
