@@ -9,22 +9,19 @@
     <!-- Top App Bar -->
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/topAppBar"
+        android:id="@+id/flashcardsScreenTopAppBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorSurface"
+        android:background="@color/md_theme_background"
         android:contentInsetStart="0dp"
         android:contentInsetLeft="0dp"
+        android:contentInsetEnd="0dp"
+        android:contentInsetRight="0dp"
+        android:contentInsetEndWithActions="0dp"
         android:contentInsetStartWithNavigation="0dp"
         android:elevation="4dp"
-        android:gravity="center_vertical"
-        android:popupTheme="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
-        android:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
-        android:title="Edit Flashcard"
-        android:titleTextAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-        android:titleTextColor="?attr/colorOnSurface"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="131dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/flashcardsEditScreenBackButton"
@@ -47,33 +44,33 @@
 
     </com.google.android.material.appbar.MaterialToolbar>
 
-    <EditText
-        android:id="@+id/flashcardDefinition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="224dp"
-        android:ems="10"
-        android:hint="Enter Flashcard Definition"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/flashcardTerm"
+        android:hint="Enter Flashcard Term"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="132dp"
         android:ems="10"
-        android:hint="Enter Flashcard Term"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/flashcardDefinition"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topAppBar"
+        app:layout_constraintTop_toBottomOf="@+id/flashcardsScreenTopAppBar"
         app:layout_constraintVertical_bias="1.0" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/flashcardDefinition"
+        android:hint="Enter Flashcard Definition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="224dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
