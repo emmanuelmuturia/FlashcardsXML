@@ -7,7 +7,6 @@
     android:orientation="vertical"
     tools:context=".flashcard.ui.fragments.HomeScreenFragment">
 
-    <!-- Button to add a new subject -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/homeScreenToolbar"
         android:layout_width="match_parent"
@@ -17,30 +16,35 @@
         android:gravity="center"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/subjectList"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:title="@string/app_name"
-        app:titleTextColor="@color/md_theme_onBackground"
-        />
+        app:titleTextColor="@color/md_theme_onBackground" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/subjectList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="21dp"
+        android:paddingTop="63dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addSubjectButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_add"
         android:layout_gravity="end"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
         android:contentDescription="@string/add_new_subject_button"
         android:padding="14dp"
+        android:src="@drawable/ic_add"
         android:tint="@color/md_theme_onPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
