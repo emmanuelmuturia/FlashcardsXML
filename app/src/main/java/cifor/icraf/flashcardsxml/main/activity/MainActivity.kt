@@ -24,10 +24,7 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        WindowCompat.setDecorFitsSystemWindows(
-            window,
-            false
-        )
+        window.statusBarColor = this.getColor(R.color.md_theme_background)
     }
 
     override fun onSupportNavigateUp(): Boolean {
