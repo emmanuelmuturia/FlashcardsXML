@@ -36,8 +36,6 @@ class SubjectEditScreenFragment : Fragment() {
             false
         )
 
-        //(activity as AppCompatActivity).setSupportActionBar(binding.subjectEditScreenToolbar)
-
         binding.subjectEditScreenBackButton.setOnClickListener {
             this.findNavController().navigateUp()
         }
