@@ -35,12 +35,13 @@
         android:id="@+id/addSubjectButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/ic_add"
         android:layout_gravity="end"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
         android:contentDescription="@string/add_new_subject_button"
         android:padding="14dp"
-        android:tint="@color/md_theme_primary"
+        android:tint="@color/md_theme_onPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
