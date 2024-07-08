@@ -17,8 +17,6 @@ class HomeScreenAdapter : RecyclerView.Adapter<HomeScreenAdapter.SubjectItemView
             notifyDataSetChanged()
         }
 
-    lateinit var subjectName: String
-
     override fun onBindViewHolder(holder: SubjectItemViewHolder, position: Int) {
         val item = data[position]
         holder.bind(item = item)
