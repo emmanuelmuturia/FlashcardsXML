@@ -15,8 +15,11 @@ import kotlinx.coroutines.launch
 class FlashcardsXMLViewModel(
     private val flashcardsXMLRepository: FlashcardsXMLRepository
 ) : ViewModel() {
+
     val subjectUIState: MutableStateFlow<SubjectUIState> =
         MutableStateFlow(value = SubjectUIState())
+
+    val flashcards: MutableStateFlow<List<FlashcardEntity>> = MutableStateFlow(value = emptyList())
 
     init {
         getSubjects()
@@ -77,6 +80,16 @@ class FlashcardsXMLViewModel(
     fun deleteFlashcard(flashcardEntity: FlashcardEntity) {
         viewModelScope.launch {
             flashcardsXMLRepository.deleteFlashcard(flashcardEntity = flashcardEntity)
+        }
+    }
+
+    fun getFlashcardsBySubjectName(subjectName: String) {
+        viewModelScope.launch {
+            flashcardsXMLRepository.getFlashcardsBySubjectName(subjectName = subjectName).collect { flashcard ->
+                flashcards.update {
+                    flashcard
+                }
+            }
         }
     }
 }

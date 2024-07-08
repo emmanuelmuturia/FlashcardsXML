@@ -30,4 +30,7 @@ interface FlashcardsXMLDao {
 
     @Query(value = "DELETE FROM FlashcardEntity WHERE flashcardSubjectName = :subjectName")
     suspend fun deleteFlashcardsBySubject(subjectName: String)
+
+    @Query(value = "SELECT * FROM FlashcardEntity WHERE flashcardSubjectName = :subjectName")
+    suspend fun getFlashcardsBySubjectName(subjectName: String): Flow<List<FlashcardEntity>>
 }

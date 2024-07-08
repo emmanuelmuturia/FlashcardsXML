@@ -59,7 +59,7 @@ class HomeScreenFragment : Fragment() {
         val subjectName = subjectItemBinding.subjectName.text.toString()
 
         // Add an onClickListener for the Card...
-        binding.subjectList.setOnClickListener {
+        subjectItemBinding.subjectCard.setOnClickListener {
             val navigationAction = HomeScreenFragmentDirections.navigateToFlashcardsScreen(
                 subjectWithFlashcards = Json.encodeToString(
                     value = SubjectWithFlashcards(

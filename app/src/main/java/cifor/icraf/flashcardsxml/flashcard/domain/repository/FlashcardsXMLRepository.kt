@@ -17,4 +17,6 @@ interface FlashcardsXMLRepository {
     suspend fun deleteSubject(subjectEntity: SubjectEntity)
 
     suspend fun deleteFlashcard(flashcardEntity: FlashcardEntity)
+
+    suspend fun getFlashcardsBySubjectName(subjectName: String): Flow<List<FlashcardEntity>>
 }

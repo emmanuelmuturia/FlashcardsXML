@@ -57,4 +57,10 @@ class FlashcardsXMLRepositoryImplementation(
             flashcardsXMLDao.deleteFlashcard(flashcardEntity = flashcardEntity)
         }
     }
+
+    override suspend fun getFlashcardsBySubjectName(subjectName: String): Flow<List<FlashcardEntity>> {
+        return withContext(context = ioDispatcher) {
+            flashcardsXMLDao.getFlashcardsBySubjectName(subjectName = subjectName)
+        }
+    }
 }
