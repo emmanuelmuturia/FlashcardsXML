@@ -7,17 +7,24 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import cifor.icraf.flashcardsxml.R
 import cifor.icraf.flashcardsxml.databinding.FragmentFlashcardsScreenBinding
 import cifor.icraf.flashcardsxml.flashcard.domain.entity.SubjectEntity
+import cifor.icraf.flashcardsxml.flashcard.ui.adapters.FlashcardsScreenAdapter
+import cifor.icraf.flashcardsxml.flashcard.ui.viewmodel.FlashcardsXMLViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.coroutines.launch
 
 class FlashcardsScreenFragment : Fragment() {
 
     private var _binding: FragmentFlashcardsScreenBinding? = null
     private val binding get() = _binding!!
+
+    private val flashcardsXMLViewModel by viewModels<FlashcardsXMLViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,7 +38,16 @@ class FlashcardsScreenFragment : Fragment() {
             false
         )
 
-        (activity as AppCompatActivity).setSupportActionBar(binding.flashcardsScreenTopAppBar)
+        val flashcardsScreenAdapter = FlashcardsScreenAdapter()
+        binding.flashcardsList.adapter = flashcardsScreenAdapter
+
+        lifecycleScope.launch {
+            flashcardsXMLViewModel.subjectUIState.collect { subjectUIState ->
+                subjectUIState.subjects.map { subject ->
+                    flashcardsScreenAdapter.flashcards = subject.flashcards
+                }
+            }
+        }
 
         binding.flashcardsScreenBackButton.setOnClickListener {
             this.findNavController().navigateUp()
