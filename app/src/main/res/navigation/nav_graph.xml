@@ -13,15 +13,14 @@
         <action
             android:id="@+id/navigateToSubjectEditScreen"
             app:destination="@id/subjectEditScreenFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/subjectEditScreenFragment"
-        android:name="cifor.icraf.flashcardsxml.flashcard.ui.fragments.SubjectEditScreenFragment"
-        android:label="SubjectEditScreenFragment" >
         <action
             android:id="@+id/navigateToFlashcardsScreen"
             app:destination="@id/flashcardsScreenFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/subjectEditScreenFragment"
+        android:name="cifor.icraf.flashcardsxml.flashcard.ui.fragments.SubjectEditScreenFragment"
+        android:label="SubjectEditScreenFragment" />
     <fragment
         android:id="@+id/flashcardsScreenFragment"
         android:name="cifor.icraf.flashcardsxml.flashcard.ui.fragments.FlashcardsScreenFragment"

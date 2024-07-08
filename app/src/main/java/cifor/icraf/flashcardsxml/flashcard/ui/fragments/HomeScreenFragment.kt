@@ -6,22 +6,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import cifor.icraf.flashcardsxml.R
 import cifor.icraf.flashcardsxml.databinding.FragmentHomeScreenBinding
+import cifor.icraf.flashcardsxml.databinding.SubjectItemBinding
+import cifor.icraf.flashcardsxml.flashcard.domain.entity.SubjectEntity
+import cifor.icraf.flashcardsxml.flashcard.domain.relations.SubjectWithFlashcards
 import cifor.icraf.flashcardsxml.flashcard.ui.adapters.HomeScreenAdapter
 import cifor.icraf.flashcardsxml.flashcard.ui.viewmodel.FlashcardsXMLViewModel
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.launch
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeScreenFragment : Fragment() {
 
     private var _binding: FragmentHomeScreenBinding? = null
     private val binding get() = _binding!!
+
+    private var _subjectItemBinding: SubjectItemBinding? = null
+    private val subjectItemBinding get() = _subjectItemBinding!!
 
     private val flashcardsXMLViewModel by viewModel<FlashcardsXMLViewModel>()
 
@@ -46,7 +50,30 @@ class HomeScreenFragment : Fragment() {
             )
         }
 
+        _subjectItemBinding = SubjectItemBinding.inflate(
+            inflater,
+            container,
+            false
+        )
+
+        val subjectName = subjectItemBinding.subjectName.text.toString()
+
         // Add an onClickListener for the Card...
+        binding.subjectList.setOnClickListener {
+            val navigationAction = HomeScreenFragmentDirections.navigateToFlashcardsScreen(
+                subjectWithFlashcards = Json.encodeToString(
+                    value = SubjectWithFlashcards(
+                        subjectEntity = SubjectEntity(
+                            subjectName = subjectName,
+                        ),
+                        flashcards = emptyList()
+                    )
+                )
+            )
+            this.findNavController().navigate(
+                navigationAction
+            )
+        }
 
         val homeScreenAdapter = HomeScreenAdapter()
         binding.subjectList.adapter = homeScreenAdapter

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
     <!-- Card view with elevation -->
-<androidx.cardview.widget.CardView android:id="@+id/cardView"
+<androidx.cardview.widget.CardView android:id="@+id/subjectCard"
     android:layout_width="match_parent"
     android:layout_height="140dp"
     app:cardBackgroundColor="@color/md_theme_surface"
