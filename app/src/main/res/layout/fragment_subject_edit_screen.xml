@@ -1,16 +1,14 @@
-<!-- subject_edit_fragment.xml -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/topAppBar"
+        android:id="@+id/subjectEditScreenToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_marginStart="4dp"
-        android:background="?attr/colorSurface"
+        android:background="@color/md_theme_background"
         android:contentInsetStart="0dp"
         android:contentInsetLeft="0dp"
         android:contentInsetEnd="0dp"
@@ -18,10 +16,9 @@
         android:contentInsetEndWithActions="0dp"
         android:contentInsetStartWithNavigation="0dp"
         android:elevation="4dp"
-        android:subtitleTextAppearance="?android:attr/textAppearanceMedium"
         android:title="Edit Subject"
         android:titleTextAppearance="?android:attr/textAppearanceLarge"
-        android:titleTextColor="?attr/colorOnSurface"
+        android:titleTextColor="@color/md_theme_onBackground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -31,7 +28,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="Arrow Back"
             android:src="@drawable/ic_arrow_back"
-            app:tint="?attr/colorOnSurface" />
+            app:tint="@color/md_theme_onBackground" />
 
         <!-- Done Button -->
         <ImageButton
@@ -56,7 +53,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topAppBar"
+        app:layout_constraintTop_toBottomOf="@+id/subjectEditScreenToolbar"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

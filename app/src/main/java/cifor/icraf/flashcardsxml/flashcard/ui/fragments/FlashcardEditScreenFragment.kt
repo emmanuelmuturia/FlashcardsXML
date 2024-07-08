@@ -13,13 +13,14 @@ import cifor.icraf.flashcardsxml.R
 import cifor.icraf.flashcardsxml.databinding.FragmentFlashcardEditScreenBinding
 import cifor.icraf.flashcardsxml.flashcard.domain.entity.FlashcardEntity
 import cifor.icraf.flashcardsxml.flashcard.ui.viewmodel.FlashcardsXMLViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FlashcardEditScreenFragment : Fragment() {
 
     private var _binding: FragmentFlashcardEditScreenBinding? = null
     private val binding = _binding!!
 
-    private val flashcardsXMLViewModel by viewModels<FlashcardsXMLViewModel>()
+    private val flashcardsXMLViewModel by viewModel<FlashcardsXMLViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,12 +40,14 @@ class FlashcardEditScreenFragment : Fragment() {
 
         binding.flashcardsEditScreenDoneButton.setOnClickListener {
             flashcardsXMLViewModel.upsertFlashcard(flashcardEntity = FlashcardEntity(
-                flashcardSubjectName = ,
-                flashCardTerm = ,
-                flashCardDefinition =
+                flashcardSubjectName = "",
+                flashCardTerm = "",
+                flashCardDefinition = ""
             ))
             this.findNavController().navigateUp()
         }
+
+        return binding.root
 
     }
 

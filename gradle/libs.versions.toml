@@ -54,7 +54,7 @@ test-mockK = { module = "io.mockk:mockk", version.ref = "mockK" }
 
 [bundles]
 koin = ["koin-core", "koin-android"]
-navigation = ["navigation-fragment", "navigation-ui", "safe-args"]
+navigation = ["navigation-fragment", "navigation-ui"]
 async = ["coroutines", "coroutines-android", "serialization-json"]
 test = ["test-coroutines", "test-mockK"]
 

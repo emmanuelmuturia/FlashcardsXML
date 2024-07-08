@@ -16,13 +16,14 @@ import cifor.icraf.flashcardsxml.flashcard.ui.adapters.HomeScreenAdapter
 import cifor.icraf.flashcardsxml.flashcard.ui.viewmodel.FlashcardsXMLViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeScreenFragment : Fragment() {
 
     private var _binding: FragmentHomeScreenBinding? = null
     private val binding get() = _binding!!
 
-    private val flashcardsXMLViewModel by viewModels<FlashcardsXMLViewModel>()
+    private val flashcardsXMLViewModel by viewModel<FlashcardsXMLViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

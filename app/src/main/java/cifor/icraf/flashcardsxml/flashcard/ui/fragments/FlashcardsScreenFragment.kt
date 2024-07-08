@@ -11,6 +11,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import cifor.icraf.flashcardsxml.R
 import cifor.icraf.flashcardsxml.databinding.FragmentFlashcardsScreenBinding
+import cifor.icraf.flashcardsxml.flashcard.domain.entity.SubjectEntity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class FlashcardsScreenFragment : Fragment() {
@@ -38,7 +39,9 @@ class FlashcardsScreenFragment : Fragment() {
 
         binding.addFlashcardButton.setOnClickListener {
             val navigationAction = FlashcardsScreenFragmentDirections.navigateToFlashcardsEditScreen(
-                subjectEntity =
+                subjectEntity = SubjectEntity(
+                    subjectName = ""
+                ).toString()
             )
             this.findNavController().navigate(
                 navigationAction

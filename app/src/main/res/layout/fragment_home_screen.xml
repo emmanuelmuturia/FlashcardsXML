@@ -8,7 +8,7 @@
     tools:context=".flashcard.ui.fragments.HomeScreenFragment">
 
     <!-- Button to add a new subject -->
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/homeScreenToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -19,7 +19,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="@string/app_name" />
+        app:title="@string/app_name"
+        app:titleTextColor="@color/md_theme_onBackground"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/subjectList"
@@ -33,7 +35,7 @@
         android:id="@+id/addSubjectButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:layout_gravity="end"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
         android:contentDescription="@string/add_new_subject_button"
