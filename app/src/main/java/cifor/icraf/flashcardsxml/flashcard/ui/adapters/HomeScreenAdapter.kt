@@ -6,10 +6,11 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import cifor.icraf.flashcardsxml.R
-import cifor.icraf.flashcardsxml.flashcard.domain.entity.SubjectEntity
 import cifor.icraf.flashcardsxml.flashcard.domain.relations.SubjectWithFlashcards
 
-class HomeScreenAdapter : RecyclerView.Adapter<HomeScreenAdapter.SubjectItemViewHolder>() {
+class HomeScreenAdapter(
+    val onCardClicked: () -> Unit
+) : RecyclerView.Adapter<HomeScreenAdapter.SubjectItemViewHolder>() {
 
     var data = listOf<SubjectWithFlashcards>()
         set(value) {
@@ -20,13 +21,16 @@ class HomeScreenAdapter : RecyclerView.Adapter<HomeScreenAdapter.SubjectItemView
     override fun onBindViewHolder(holder: SubjectItemViewHolder, position: Int) {
         val item = data[position]
         holder.bind(item = item)
+        holder.itemView.setOnClickListener {
+            onCardClicked()
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubjectItemViewHolder = SubjectItemViewHolder.inflateFrom(parent)
 
     override fun getItemCount(): Int = data.size
 
-    class SubjectItemViewHolder(val rootView: CardView) : RecyclerView.ViewHolder(rootView) {
+    class SubjectItemViewHolder(rootView: CardView) : RecyclerView.ViewHolder(rootView) {
 
         private val subjectName = rootView.findViewById<TextView>(R.id.subjectName)
 

@@ -10,7 +10,7 @@
         android:id="@+id/flashcardsScreenTopAppBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorSurface"
+        android:background="@color/md_theme_background"
         android:contentInsetStart="0dp"
         android:contentInsetLeft="0dp"
         android:contentInsetEnd="0dp"
@@ -18,9 +18,6 @@
         android:contentInsetEndWithActions="0dp"
         android:contentInsetStartWithNavigation="0dp"
         android:elevation="4dp"
-        android:title="@string/app_name"
-        android:titleTextAppearance="?android:attr/textAppearanceLarge"
-        android:titleTextColor="?attr/colorOnSurface"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 

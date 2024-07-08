@@ -28,9 +28,6 @@
         <action
             android:id="@+id/navigateToFlashcardsEditScreen"
             app:destination="@id/flashcardEditScreenFragment" />
-        <argument
-            android:name="subjectWithFlashcards"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/flashcardEditScreenFragment"

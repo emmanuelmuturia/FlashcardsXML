@@ -41,13 +41,11 @@ class FlashcardsScreenFragment : Fragment() {
         val flashcardsScreenAdapter = FlashcardsScreenAdapter()
         binding.flashcardsList.adapter = flashcardsScreenAdapter
 
-        lifecycleScope.launch {
-            flashcardsXMLViewModel.subjectUIState.collect { subjectUIState ->
-                subjectUIState.subjects.map { subject ->
-                    flashcardsScreenAdapter.flashcards = subject.flashcards
-                }
-            }
-        }
+        //val subjectName = FlashcardsScreenFragmentArgs.fromBundle(bundle = requireArguments()).subjectName
+
+        /*lifecycleScope.launch {
+            //flashcardsScreenAdapter.flashcards = flashcardsXMLViewModel.getFlashcardsBySubjectName(subjectName = subjectName)
+        }*/
 
         binding.flashcardsScreenBackButton.setOnClickListener {
             this.findNavController().navigateUp()

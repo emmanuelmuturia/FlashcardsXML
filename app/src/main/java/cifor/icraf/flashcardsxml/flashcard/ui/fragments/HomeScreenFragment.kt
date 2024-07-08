@@ -1,6 +1,7 @@
 package cifor.icraf.flashcardsxml.flashcard.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -58,24 +59,13 @@ class HomeScreenFragment : Fragment() {
 
         val subjectName = subjectItemBinding.subjectName.text.toString()
 
-        // Add an onClickListener for the Card...
-        subjectItemBinding.subjectCard.setOnClickListener {
-            val navigationAction = HomeScreenFragmentDirections.navigateToFlashcardsScreen(
-                subjectWithFlashcards = Json.encodeToString(
-                    value = SubjectWithFlashcards(
-                        subjectEntity = SubjectEntity(
-                            subjectName = subjectName,
-                        ),
-                        flashcards = emptyList()
-                    )
-                )
-            )
+        val homeScreenAdapter = HomeScreenAdapter(onCardClicked = {
+            Log.d("Subject Card", "I have been clicked on...")
+            val navigationAction = HomeScreenFragmentDirections.navigateToFlashcardsScreen()
             this.findNavController().navigate(
                 navigationAction
             )
-        }
-
-        val homeScreenAdapter = HomeScreenAdapter()
+        })
         binding.subjectList.adapter = homeScreenAdapter
 
         lifecycleScope.launch {
