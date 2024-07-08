@@ -9,6 +9,7 @@ import cifor.icraf.flashcardsxml.flashcard.domain.entity.SubjectEntity
 import cifor.icraf.flashcardsxml.flashcard.domain.repository.FlashcardsXMLRepository
 import cifor.icraf.flashcardsxml.flashcard.ui.state.SubjectUIState
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -23,6 +24,7 @@ class FlashcardsXMLViewModel(
 
     init {
         getSubjects()
+        getAllFlashcards()
     }
 
     fun getSubjects() {
@@ -83,13 +85,15 @@ class FlashcardsXMLViewModel(
         }
     }
 
-    fun getFlashcardsBySubjectName(subjectName: String) {
+    fun getAllFlashcards() {
         viewModelScope.launch {
-            flashcardsXMLRepository.getFlashcardsBySubjectName(subjectName = subjectName).collect { flashcard ->
-                flashcards.update {
-                    flashcard
-                }
+            flashcardsXMLRepository.getAllFlashcards().collect {
+                flashcards.update { it }
             }
         }
+    }
+
+    fun getFlashcardsBySubjectName(subjectName: String): List<FlashcardEntity> {
+        return flashcards.value.filter { it.flashcardSubjectName == subjectName }
     }
 }

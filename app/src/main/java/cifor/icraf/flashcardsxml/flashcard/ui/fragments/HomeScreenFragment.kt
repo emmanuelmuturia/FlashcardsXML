@@ -61,7 +61,7 @@ class HomeScreenFragment : Fragment() {
 
         val homeScreenAdapter = HomeScreenAdapter(onCardClicked = {
             Log.d("Subject Card", "I have been clicked on...")
-            val navigationAction = HomeScreenFragmentDirections.navigateToFlashcardsScreen()
+            val navigationAction = HomeScreenFragmentDirections.navigateToFlashcardsScreen(subjectName = subjectName)
             this.findNavController().navigate(
                 navigationAction
             )
