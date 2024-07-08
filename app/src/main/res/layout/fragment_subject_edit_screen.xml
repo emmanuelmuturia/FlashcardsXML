@@ -7,7 +7,6 @@
         android:id="@+id/subjectEditScreenToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_marginStart="4dp"
         android:background="@color/md_theme_background"
         android:contentInsetStart="0dp"
         android:contentInsetLeft="0dp"
@@ -16,9 +15,6 @@
         android:contentInsetEndWithActions="0dp"
         android:contentInsetStartWithNavigation="0dp"
         android:elevation="4dp"
-        android:title="Edit Subject"
-        android:titleTextAppearance="?android:attr/textAppearanceLarge"
-        android:titleTextColor="@color/md_theme_onBackground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -28,7 +24,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="Arrow Back"
             android:src="@drawable/ic_arrow_back"
-            app:tint="@color/md_theme_onBackground" />
+            app:tint="@color/md_theme_primary" />
 
         <!-- Done Button -->
         <ImageButton
@@ -36,10 +32,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
+            android:layout_marginRight="21dp"
             android:contentDescription="Done"
-            android:padding="14.dp"
             android:src="@drawable/ic_done"
-            app:tint="@color/md_theme_onBackground" />
+            app:tint="@color/md_theme_primary" />
 
     </com.google.android.material.appbar.MaterialToolbar>
 
@@ -50,6 +46,8 @@
         android:layout_marginTop="300dp"
         android:hint="Enter Subject Name"
         android:inputType="textCapSentences"
+        android:layout_marginRight="21dp"
+        android:layout_marginLeft="21dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

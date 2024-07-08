@@ -36,7 +36,7 @@ class SubjectEditScreenFragment : Fragment() {
             false
         )
 
-        (activity as AppCompatActivity).setSupportActionBar(binding.subjectEditScreenToolbar)
+        //(activity as AppCompatActivity).setSupportActionBar(binding.subjectEditScreenToolbar)
 
         binding.subjectEditScreenBackButton.setOnClickListener {
             this.findNavController().navigateUp()
@@ -54,8 +54,6 @@ class SubjectEditScreenFragment : Fragment() {
                 Toast.LENGTH_LONG
             ).show()
         }
-
-        // Configure the EditText...
 
         return binding.root
 
