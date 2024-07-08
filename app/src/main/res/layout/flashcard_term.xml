@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:id="@+id/flashcardTermCard"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    app:cardBackgroundColor="@color/md_theme_surface"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:longClickable="true"
+    android:focusable="true"
+    android:layout_marginBottom="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginRight="21dp"
+    android:layout_marginLeft="21dp"
+    app:cardCornerRadius="21dp"
+    app:cardElevation="7dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/flashcardTerm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/md_theme_onSurface"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
