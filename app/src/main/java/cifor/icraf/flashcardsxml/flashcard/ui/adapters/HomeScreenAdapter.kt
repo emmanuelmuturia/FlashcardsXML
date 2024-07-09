@@ -9,7 +9,7 @@ import cifor.icraf.flashcardsxml.R
 import cifor.icraf.flashcardsxml.flashcard.domain.relations.SubjectWithFlashcards
 
 class HomeScreenAdapter(
-    val onCardClicked: () -> Unit
+    val onCardClicked: (String) -> Unit
 ) : RecyclerView.Adapter<HomeScreenAdapter.SubjectItemViewHolder>() {
 
     var data = listOf<SubjectWithFlashcards>()
@@ -22,7 +22,7 @@ class HomeScreenAdapter(
         val item = data[position]
         holder.bind(item = item)
         holder.itemView.setOnClickListener {
-            onCardClicked()
+            onCardClicked(it.rootView.findViewById<TextView>(R.id.subjectName).text.toString())
         }
     }
 
