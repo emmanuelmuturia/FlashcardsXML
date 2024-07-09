@@ -6,6 +6,7 @@ import cifor.icraf.flashcardsxml.flashcard.domain.entity.FlashcardEntity
 import cifor.icraf.flashcardsxml.flashcard.domain.entity.SubjectEntity
 import kotlinx.serialization.Serializable
 
+@Serializable
 data class SubjectWithFlashcards(
     @Embedded val subjectEntity: SubjectEntity,
     @Relation(

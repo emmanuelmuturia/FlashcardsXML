@@ -9,7 +9,7 @@
     <!-- Top App Bar -->
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/flashcardsScreenTopAppBar"
+        android:id="@+id/flashcardsEditScreenTopAppBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/md_theme_background"
@@ -25,51 +25,49 @@
 
         <ImageButton
             android:id="@+id/flashcardsEditScreenBackButton"
-            style="?attr/actionButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="Back"
+            android:contentDescription="Arrow Back"
             android:src="@drawable/ic_arrow_back"
             app:tint="@color/md_theme_onBackground" />
 
         <ImageButton
             android:id="@+id/flashcardsEditScreenDoneButton"
-            style="?attr/actionButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
+            android:layout_marginRight="21dp"
             android:contentDescription="Done"
             android:src="@drawable/ic_done"
-            app:tint="@color/md_theme_onBackground" />
+            app:tint="@color/md_theme_onBackground"  />
 
     </com.google.android.material.appbar.MaterialToolbar>
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/flashcardTerm"
-        android:hint="Enter Flashcard Term"
-        android:layout_width="wrap_content"
+        android:id="@+id/flashcardTermEditText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="132dp"
-        android:ems="10"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/flashcardDefinition"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginRight="21dp"
+        android:hint="Enter Flashcard Term"
+        android:inputType="textCapSentences"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flashcardsScreenTopAppBar"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/flashcardsEditScreenTopAppBar" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/flashcardDefinition"
-        android:hint="Enter Flashcard Definition"
-        android:layout_width="wrap_content"
+        android:id="@+id/flashcardDefinitionEditText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="224dp"
-        android:ems="10"
-        android:inputType="text"
+        android:layout_marginLeft="21dp"
+        android:layout_marginRight="21dp"
+        android:layout_marginBottom="176dp"
+        android:hint="Enter Flashcard Definition"
+        android:inputType="textCapSentences"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent" />
 
 

@@ -8,23 +8,28 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import cifor.icraf.flashcardsxml.R
 import cifor.icraf.flashcardsxml.databinding.FragmentFlashcardsScreenBinding
 import cifor.icraf.flashcardsxml.flashcard.domain.entity.SubjectEntity
+import cifor.icraf.flashcardsxml.flashcard.domain.relations.SubjectWithFlashcards
 import cifor.icraf.flashcardsxml.flashcard.ui.adapters.FlashcardsScreenAdapter
+import cifor.icraf.flashcardsxml.flashcard.ui.viewmodel.FlashcardsScreenViewModel
 import cifor.icraf.flashcardsxml.flashcard.ui.viewmodel.FlashcardsXMLViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.launch
+import kotlinx.serialization.json.Json
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FlashcardsScreenFragment : Fragment() {
 
     private var _binding: FragmentFlashcardsScreenBinding? = null
     private val binding get() = _binding!!
 
-    private val flashcardsXMLViewModel by viewModels<FlashcardsXMLViewModel>()
+    private val flashcardsScreenViewModel by viewModel<FlashcardsScreenViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,10 +46,18 @@ class FlashcardsScreenFragment : Fragment() {
         val flashcardsScreenAdapter = FlashcardsScreenAdapter()
         binding.flashcardsList.adapter = flashcardsScreenAdapter
 
+        /*val subjectWithFlashcards = Json.decodeFromString<SubjectWithFlashcards>(
+            string = FlashcardsScreenFragmentArgs.fromBundle(bundle = requireArguments()).subjectWithFlashcards
+        )
+
+        val subjectName = subjectWithFlashcards.subjectEntity.subjectName
+
+        flashcardsScreenAdapter.flashcards = subjectWithFlashcards.flashcards*/
+
         val subjectName = FlashcardsScreenFragmentArgs.fromBundle(bundle = requireArguments()).subjectName
 
-        lifecycleScope.launch {
-            flashcardsScreenAdapter.flashcards = flashcardsXMLViewModel.getFlashcardsBySubjectName(subjectName = subjectName)
+        flashcardsScreenViewModel.flashcards.observe(viewLifecycleOwner) { flashcards ->
+            flashcardsScreenAdapter.flashcards = flashcards.filter { it.flashcardSubjectName == subjectName }
         }
 
         binding.flashcardsScreenBackButton.setOnClickListener {
@@ -53,9 +66,7 @@ class FlashcardsScreenFragment : Fragment() {
 
         binding.addFlashcardButton.setOnClickListener {
             val navigationAction = FlashcardsScreenFragmentDirections.navigateToFlashcardsEditScreen(
-                subjectEntity = SubjectEntity(
-                    subjectName = ""
-                ).toString()
+                subjectName = subjectName
             )
             this.findNavController().navigate(
                 navigationAction
@@ -64,6 +75,11 @@ class FlashcardsScreenFragment : Fragment() {
 
         return binding.root
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

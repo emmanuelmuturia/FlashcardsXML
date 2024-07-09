@@ -36,7 +36,7 @@ class FlashcardsScreenAdapter : RecyclerView.Adapter<FlashcardsScreenAdapter.Fla
             fun inflateFrom(parent: ViewGroup): FlashcardsScreenViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val view = layoutInflater.inflate(
-                    R.layout.flashcard_term,
+                    R.layout.flashcard_item,
                     parent,
                     false
                 ) as CardView

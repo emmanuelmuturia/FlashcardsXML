@@ -41,11 +41,17 @@ class SubjectEditScreenFragment : Fragment() {
         }
 
         binding.subjectEditScreenDoneButton.setOnClickListener {
-            val subjectName = binding.editTextSubjectName.text.toString()
-            flashcardsXMLViewModel.upsertSubject(subjectEntity = SubjectEntity(
-                subjectName = subjectName
-            ))
-            this.findNavController().navigateUp()
+            val subjectName = binding.editTextSubjectName.text
+            val subjectEntity = SubjectEntity(
+                subjectName = subjectName.toString()
+            )
+            flashcardsXMLViewModel.upsertSubject(subjectEntity = subjectEntity)
+            val navigationActions = SubjectEditScreenFragmentDirections.navigateToHomeScreen(
+                subjectName = subjectName.toString()
+            )
+            this.findNavController().navigate(
+                directions = navigationActions
+            )
             Toast.makeText(
                 context,
                 "Subject has been saved successfully!",
@@ -55,6 +61,11 @@ class SubjectEditScreenFragment : Fragment() {
 
         return binding.root
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

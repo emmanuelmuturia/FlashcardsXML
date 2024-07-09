@@ -25,9 +25,6 @@ class HomeScreenFragment : Fragment() {
     private var _binding: FragmentHomeScreenBinding? = null
     private val binding get() = _binding!!
 
-    private var _subjectItemBinding: SubjectItemBinding? = null
-    private val subjectItemBinding get() = _subjectItemBinding!!
-
     private val flashcardsXMLViewModel by viewModel<FlashcardsXMLViewModel>()
 
     override fun onCreateView(
@@ -51,21 +48,26 @@ class HomeScreenFragment : Fragment() {
             )
         }
 
-        _subjectItemBinding = SubjectItemBinding.inflate(
-            inflater,
-            container,
-            false
-        )
+        val subjectName = HomeScreenFragmentArgs.fromBundle(bundle = requireArguments()).subjectName
 
-        val subjectName = subjectItemBinding.subjectName.text.toString()
+        /*val subjectWithFlashcards = SubjectWithFlashcards(
+            subjectEntity = SubjectEntity(
+                subjectName = subjectName
+            ),
+            flashcards = emptyList() // I am not sure about this part...
+        )*/
 
         val homeScreenAdapter = HomeScreenAdapter(onCardClicked = {
             Log.d("Subject Card", "I have been clicked on...")
-            val navigationAction = HomeScreenFragmentDirections.navigateToFlashcardsScreen(subjectName = subjectName)
+            val navigationAction =
+                HomeScreenFragmentDirections.navigateToFlashcardsScreen(
+                    subjectName = subjectName
+                )
             this.findNavController().navigate(
                 navigationAction
             )
         })
+
         binding.subjectList.adapter = homeScreenAdapter
 
         lifecycleScope.launch {
@@ -81,7 +83,6 @@ class HomeScreenFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        _subjectItemBinding = null
     }
 
 }

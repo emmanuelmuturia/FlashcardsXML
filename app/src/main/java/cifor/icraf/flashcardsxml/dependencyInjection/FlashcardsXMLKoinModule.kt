@@ -5,6 +5,7 @@ import cifor.icraf.flashcardsxml.flashcard.data.local.database.FlashcardsXMLLoca
 import cifor.icraf.flashcardsxml.flashcard.data.repository.FlashcardsXMLRepositoryImplementation
 import cifor.icraf.flashcardsxml.flashcard.domain.dao.FlashcardsXMLDao
 import cifor.icraf.flashcardsxml.flashcard.domain.repository.FlashcardsXMLRepository
+import cifor.icraf.flashcardsxml.flashcard.ui.viewmodel.FlashcardsScreenViewModel
 import cifor.icraf.flashcardsxml.flashcard.ui.viewmodel.FlashcardsXMLViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -42,5 +43,11 @@ val flashcardsXmlKoinModule =
 
         single<FlashcardsXMLDao> {
             get<FlashcardsXMLLocalDatabase>().flashcardDao()
+        }
+
+        viewModel {
+            FlashcardsScreenViewModel(
+                flashcardsXMLRepository = get()
+            )
         }
     }

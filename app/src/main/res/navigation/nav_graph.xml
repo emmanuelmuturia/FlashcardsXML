@@ -3,7 +3,7 @@
              xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeScreenFragment">
+    app:startDestination="@id/subjectEditScreenFragment">
 
     <fragment
         android:id="@+id/homeScreenFragment"
@@ -16,11 +16,18 @@
         <action
             android:id="@+id/navigateToFlashcardsScreen"
             app:destination="@id/flashcardsScreenFragment" />
+        <argument
+            android:name="subjectName"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/subjectEditScreenFragment"
         android:name="cifor.icraf.flashcardsxml.flashcard.ui.fragments.SubjectEditScreenFragment"
-        android:label="SubjectEditScreenFragment" />
+        android:label="SubjectEditScreenFragment" >
+        <action
+            android:id="@+id/navigateToHomeScreen"
+            app:destination="@id/homeScreenFragment" />
+    </fragment>
     <fragment
         android:id="@+id/flashcardsScreenFragment"
         android:name="cifor.icraf.flashcardsxml.flashcard.ui.fragments.FlashcardsScreenFragment"
@@ -37,7 +44,7 @@
         android:name="cifor.icraf.flashcardsxml.flashcard.ui.fragments.FlashcardEditScreenFragment"
         android:label="FlashcardEditScreenFragment" >
         <argument
-            android:name="subjectEntity"
+            android:name="subjectName"
             app:argType="string" />
     </fragment>
 </navigation>

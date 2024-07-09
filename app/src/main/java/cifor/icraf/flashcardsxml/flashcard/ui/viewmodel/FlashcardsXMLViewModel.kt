@@ -1,5 +1,6 @@
 package cifor.icraf.flashcardsxml.flashcard.ui.viewmodel
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import cifor.icraf.flashcardsxml.commons.result.LocalResult
@@ -20,11 +21,8 @@ class FlashcardsXMLViewModel(
     val subjectUIState: MutableStateFlow<SubjectUIState> =
         MutableStateFlow(value = SubjectUIState())
 
-    val flashcards: MutableStateFlow<List<FlashcardEntity>> = MutableStateFlow(value = emptyList())
-
     init {
         getSubjects()
-        getAllFlashcards()
     }
 
     fun getSubjects() {
@@ -83,17 +81,5 @@ class FlashcardsXMLViewModel(
         viewModelScope.launch {
             flashcardsXMLRepository.deleteFlashcard(flashcardEntity = flashcardEntity)
         }
-    }
-
-    fun getAllFlashcards() {
-        viewModelScope.launch {
-            flashcardsXMLRepository.getAllFlashcards().collect {
-                flashcards.update { it }
-            }
-        }
-    }
-
-    fun getFlashcardsBySubjectName(subjectName: String): List<FlashcardEntity> {
-        return flashcards.value.filter { it.flashcardSubjectName == subjectName }
     }
 }

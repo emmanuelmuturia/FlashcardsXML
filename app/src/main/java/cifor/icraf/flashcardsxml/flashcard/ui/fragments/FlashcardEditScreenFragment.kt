@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
@@ -18,7 +20,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class FlashcardEditScreenFragment : Fragment() {
 
     private var _binding: FragmentFlashcardEditScreenBinding? = null
-    private val binding = _binding!!
+    private val binding get() = _binding!!
 
     private val flashcardsXMLViewModel by viewModel<FlashcardsXMLViewModel>()
 
@@ -39,16 +41,33 @@ class FlashcardEditScreenFragment : Fragment() {
         }
 
         binding.flashcardsEditScreenDoneButton.setOnClickListener {
-            flashcardsXMLViewModel.upsertFlashcard(flashcardEntity = FlashcardEntity(
-                flashcardSubjectName = "",
-                flashCardTerm = "",
-                flashCardDefinition = ""
-            ))
+            val subjectName = FlashcardEditScreenFragmentArgs.fromBundle(bundle = requireArguments()).subjectName
+
+            val flashcardTerm = binding.flashcardTermEditText.text.toString()
+
+            val flashcardDefinition = binding.flashcardDefinitionEditText.text.toString()
+
+            val flashcardEntity = FlashcardEntity(
+                flashcardSubjectName = subjectName,
+                flashCardTerm = flashcardTerm,
+                flashCardDefinition = flashcardDefinition
+            )
+            flashcardsXMLViewModel.upsertFlashcard(flashcardEntity = flashcardEntity)
             this.findNavController().navigateUp()
+            Toast.makeText(
+                context,
+                "Flashcard has been saved successfully!",
+                Toast.LENGTH_LONG
+            ).show()
         }
 
         return binding.root
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }
