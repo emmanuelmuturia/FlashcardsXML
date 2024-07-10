@@ -43,15 +43,6 @@ class SubjectHomeScreenFragment : Fragment() {
             )
         }
 
-       // val subjectName = HomeScreenFragmentArgs.fromBundle(bundle = requireArguments()).subjectName
-
-        /*val subjectWithFlashcards = SubjectWithFlashcards(
-            subjectEntity = SubjectEntity(
-                subjectName = subjectName
-            ),
-            flashcards = emptyList() // I am not sure about this part...
-        )*/
-
         val homeScreenAdapter = HomeScreenAdapter(onCardClicked = { subjectName ->
             Log.d("Subject Card", "I have been clicked on...")
             val navigationAction =
