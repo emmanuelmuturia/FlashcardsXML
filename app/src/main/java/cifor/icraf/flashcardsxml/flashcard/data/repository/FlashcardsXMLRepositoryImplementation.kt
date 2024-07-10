@@ -26,7 +26,7 @@ class FlashcardsXMLRepositoryImplementation(
         }
     }
 
-    override suspend fun getAllFlashcardsBySubject(): Flow<List<SubjectWithFlashcards>> {
+    override suspend fun getAllSubjectsWithFlashcards(): Flow<List<SubjectWithFlashcards>> {
         return withContext(context = ioDispatcher) {
             flashcardsXMLDao.getAllSubjectsWithFlashcards()
         }

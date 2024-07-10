@@ -1,6 +1,5 @@
 package cifor.icraf.flashcardsxml.flashcard.ui.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import cifor.icraf.flashcardsxml.commons.result.LocalResult
@@ -10,7 +9,6 @@ import cifor.icraf.flashcardsxml.flashcard.domain.entity.SubjectEntity
 import cifor.icraf.flashcardsxml.flashcard.domain.repository.FlashcardsXMLRepository
 import cifor.icraf.flashcardsxml.flashcard.ui.state.SubjectUIState
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -28,7 +26,7 @@ class FlashcardsXMLViewModel(
     fun getSubjects() {
         subjectUIState.value = SubjectUIState(isLoading = true)
         viewModelScope.launch {
-            flashcardsXMLRepository.getAllFlashcardsBySubject().asResult().collect { result ->
+            flashcardsXMLRepository.getAllSubjectsWithFlashcards().asResult().collect { result ->
                 when (result) {
                     is LocalResult.Success -> {
                         subjectUIState.update {

@@ -16,7 +16,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(value = AndroidJUnit4::class)
-class FlashcardsDaoTest {
+class FlashcardsXMLDaoTest {
     private lateinit var flashcardsLocalDatabase: FlashcardsXMLLocalDatabase
     private lateinit var flashcardDao: FlashcardsXMLDao
 

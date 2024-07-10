@@ -10,17 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import cifor.icraf.flashcardsxml.databinding.FragmentHomeScreenBinding
-import cifor.icraf.flashcardsxml.databinding.SubjectItemBinding
-import cifor.icraf.flashcardsxml.flashcard.domain.entity.SubjectEntity
-import cifor.icraf.flashcardsxml.flashcard.domain.relations.SubjectWithFlashcards
 import cifor.icraf.flashcardsxml.flashcard.ui.adapters.HomeScreenAdapter
 import cifor.icraf.flashcardsxml.flashcard.ui.viewmodel.FlashcardsXMLViewModel
 import kotlinx.coroutines.launch
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeScreenFragment : Fragment() {
+class SubjectHomeScreenFragment : Fragment() {
 
     private var _binding: FragmentHomeScreenBinding? = null
     private val binding get() = _binding!!

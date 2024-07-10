@@ -10,7 +10,7 @@ interface FlashcardsXMLRepository {
 
     suspend fun upsertFlashcard(flashcardEntity: FlashcardEntity)
 
-    suspend fun getAllFlashcardsBySubject(): Flow<List<SubjectWithFlashcards>>
+    suspend fun getAllSubjectsWithFlashcards(): Flow<List<SubjectWithFlashcards>>
 
     suspend fun searchForSubject(searchQuery: String): Flow<List<SubjectWithFlashcards>>
 

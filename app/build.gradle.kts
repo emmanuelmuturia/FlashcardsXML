@@ -64,7 +64,7 @@ dependencies {
 
     testImplementation(dependencyNotation = libs.junit)
 
-    androidTestImplementation(dependencyNotation = libs.test.coroutines)
+    testImplementation(dependencyNotation = libs.test.coroutines)
     testImplementation(dependencyNotation = libs.test.mockK)
 
     debugImplementation(dependencyNotation = libs.leakcanary.android)

@@ -5,13 +5,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import cifor.icraf.flashcardsxml.flashcard.domain.entity.FlashcardEntity
 import cifor.icraf.flashcardsxml.flashcard.domain.repository.FlashcardsXMLRepository
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 class FlashcardsScreenViewModel(
     private val flashcardsXMLRepository: FlashcardsXMLRepository
 ) : ViewModel() {
 
-    val flashcards: MutableLiveData<List<FlashcardEntity>> = MutableLiveData(emptyList())
+    val flashcards: MutableStateFlow<List<FlashcardEntity>> = MutableStateFlow(value = emptyList())
 
     init {
        getAllFlashcards()

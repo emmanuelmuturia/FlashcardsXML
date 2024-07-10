@@ -8,8 +8,10 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import cifor.icraf.flashcardsxml.R
@@ -56,8 +58,12 @@ class FlashcardsScreenFragment : Fragment() {
 
         val subjectName = FlashcardsScreenFragmentArgs.fromBundle(bundle = requireArguments()).subjectName
 
-        flashcardsScreenViewModel.flashcards.observe(viewLifecycleOwner) { flashcards ->
-            flashcardsScreenAdapter.flashcards = flashcards.filter { it.flashcardSubjectName == subjectName }
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(state = Lifecycle.State.STARTED) {
+                flashcardsScreenViewModel.flashcards.collect { flashcards ->
+                    flashcardsScreenAdapter.flashcards = flashcards.filter { it.flashcardSubjectName == subjectName }
+                }
+            }
         }
 
         binding.flashcardsScreenBackButton.setOnClickListener {
