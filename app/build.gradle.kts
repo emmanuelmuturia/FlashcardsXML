@@ -71,6 +71,8 @@ dependencies {
 
     androidTestImplementation(dependencyNotation = libs.androidx.junit)
     androidTestImplementation(dependencyNotation = libs.androidx.espresso.core)
+    androidTestImplementation(dependencyNotation = libs.androidx.test.runner)
+    androidTestImplementation(dependencyNotation = libs.androidx.test.rules)
     implementation(kotlin("script-runtime"))
 
 }
