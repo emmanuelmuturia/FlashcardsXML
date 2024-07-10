@@ -40,6 +40,10 @@ class SubjectEditScreenFragment : Fragment() {
             this.findNavController().navigateUp()
         }
 
+        if (activity is AppCompatActivity) {
+            (activity as AppCompatActivity).setSupportActionBar(binding.subjectEditScreenToolbar)
+        }
+
         binding.subjectEditScreenDoneButton.setOnClickListener {
             val subjectName = binding.editTextSubjectName.text
             val subjectEntity = SubjectEntity(

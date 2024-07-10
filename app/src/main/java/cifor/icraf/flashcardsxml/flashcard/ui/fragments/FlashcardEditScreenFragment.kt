@@ -40,6 +40,10 @@ class FlashcardEditScreenFragment : Fragment() {
             this.findNavController().navigateUp()
         }
 
+        if (activity is AppCompatActivity) {
+            (activity as AppCompatActivity).setSupportActionBar(binding.flashcardsEditScreenTopAppBar)
+        }
+
         binding.flashcardsEditScreenDoneButton.setOnClickListener {
             val subjectName = FlashcardEditScreenFragmentArgs.fromBundle(bundle = requireArguments()).subjectName
 

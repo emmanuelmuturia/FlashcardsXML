@@ -45,16 +45,12 @@ class FlashcardsScreenFragment : Fragment() {
             false
         )
 
+        if (activity is AppCompatActivity) {
+            (activity as AppCompatActivity).setSupportActionBar(binding.flashcardsScreenTopAppBar)
+        }
+
         val flashcardsScreenAdapter = FlashcardsScreenAdapter()
         binding.flashcardsList.adapter = flashcardsScreenAdapter
-
-        /*val subjectWithFlashcards = Json.decodeFromString<SubjectWithFlashcards>(
-            string = FlashcardsScreenFragmentArgs.fromBundle(bundle = requireArguments()).subjectWithFlashcards
-        )
-
-        val subjectName = subjectWithFlashcards.subjectEntity.subjectName
-
-        flashcardsScreenAdapter.flashcards = subjectWithFlashcards.flashcards*/
 
         val subjectName = FlashcardsScreenFragmentArgs.fromBundle(bundle = requireArguments()).subjectName
 

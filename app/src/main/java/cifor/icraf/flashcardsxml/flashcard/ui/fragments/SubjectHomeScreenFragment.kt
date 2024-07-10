@@ -34,7 +34,9 @@ class SubjectHomeScreenFragment : Fragment() {
             false
         )
 
-        (activity as AppCompatActivity).setSupportActionBar(binding.homeScreenToolbar)
+       if (activity is AppCompatActivity) {
+           (activity as AppCompatActivity).setSupportActionBar(binding.homeScreenToolbar)
+       }
 
         binding.addSubjectButton.setOnClickListener {
             val navigationAction = SubjectHomeScreenFragmentDirections.navigateToSubjectEditScreen()

@@ -21,6 +21,7 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 androidxTestRunner = "1.6.1"
 androidxTestRules = "1.6.1"
+fragmentTest = "1.8.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -55,6 +56,8 @@ androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "j
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidxTestRunner" }
 androidx-test-rules = { module = "androidx.test:rules", version.ref = "androidxTestRules" }
+fragment-testing = { module = "androidx.fragment:fragment-testing", version.ref = "fragmentTest" }
+fragment-testing-manifest = { module = "androidx.fragment:fragment-testing-manifest", version.ref = "fragmentTest" }
 
 [bundles]
 koin = ["koin-core", "koin-android"]

@@ -68,7 +68,9 @@ dependencies {
     testImplementation(dependencyNotation = libs.test.mockK)
 
     debugImplementation(dependencyNotation = libs.leakcanary.android)
+    debugImplementation(dependencyNotation = libs.fragment.testing.manifest)
 
+    androidTestImplementation(dependencyNotation = libs.fragment.testing)
     androidTestImplementation(dependencyNotation = libs.androidx.junit)
     androidTestImplementation(dependencyNotation = libs.androidx.espresso.core)
     androidTestImplementation(dependencyNotation = libs.androidx.test.runner)
