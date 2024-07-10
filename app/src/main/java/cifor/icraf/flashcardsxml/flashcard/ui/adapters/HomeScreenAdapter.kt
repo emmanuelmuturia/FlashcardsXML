@@ -22,7 +22,9 @@ class HomeScreenAdapter(
         val item = data[position]
         holder.bind(item = item)
         holder.itemView.setOnClickListener {
-            onCardClicked(it.rootView.findViewById<TextView>(R.id.subjectName).text.toString())
+            onCardClicked(
+                item.subjectEntity.subjectName
+            )
         }
     }
 
