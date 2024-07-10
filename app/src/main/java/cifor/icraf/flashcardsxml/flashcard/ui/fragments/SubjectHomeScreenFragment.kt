@@ -37,7 +37,7 @@ class SubjectHomeScreenFragment : Fragment() {
         (activity as AppCompatActivity).setSupportActionBar(binding.homeScreenToolbar)
 
         binding.addSubjectButton.setOnClickListener {
-            val navigationAction = HomeScreenFragmentDirections.navigateToSubjectEditScreen()
+            val navigationAction = SubjectHomeScreenFragmentDirections.navigateToSubjectEditScreen()
             this.findNavController().navigate(
                 navigationAction
             )
@@ -55,7 +55,7 @@ class SubjectHomeScreenFragment : Fragment() {
         val homeScreenAdapter = HomeScreenAdapter(onCardClicked = { subjectName ->
             Log.d("Subject Card", "I have been clicked on...")
             val navigationAction =
-                HomeScreenFragmentDirections.navigateToFlashcardsScreen(
+                SubjectHomeScreenFragmentDirections.navigateToFlashcardsScreen(
                     subjectName = subjectName
                 )
             this.findNavController().navigate(
