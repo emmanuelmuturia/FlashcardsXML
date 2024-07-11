@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.coroutineScope
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import cifor.icraf.flashcardsxml.databinding.FragmentHomeScreenBinding
 import cifor.icraf.flashcardsxml.flashcard.ui.adapters.HomeScreenAdapter
 import cifor.icraf.flashcardsxml.flashcard.ui.viewmodel.FlashcardsXMLViewModel
+import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -58,7 +60,7 @@ class SubjectHomeScreenFragment : Fragment() {
 
         binding.subjectList.adapter = homeScreenAdapter
 
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             flashcardsXMLViewModel.subjectUIState.collect { subjectUIState ->
                 homeScreenAdapter.data = subjectUIState.subjects
             }
@@ -71,6 +73,8 @@ class SubjectHomeScreenFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        binding.subjectList.adapter = null
+        viewLifecycleOwner.lifecycleScope.coroutineContext.cancelChildren()
     }
 
 }
