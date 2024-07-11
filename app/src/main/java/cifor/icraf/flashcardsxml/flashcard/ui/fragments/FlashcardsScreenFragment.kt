@@ -22,6 +22,7 @@ import cifor.icraf.flashcardsxml.flashcard.ui.adapters.FlashcardsScreenAdapter
 import cifor.icraf.flashcardsxml.flashcard.ui.viewmodel.FlashcardsScreenViewModel
 import cifor.icraf.flashcardsxml.flashcard.ui.viewmodel.FlashcardsXMLViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -82,6 +83,8 @@ class FlashcardsScreenFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        binding.flashcardsList.adapter = null
+        viewLifecycleOwner.lifecycleScope.coroutineContext.cancelChildren()
     }
 
 }
