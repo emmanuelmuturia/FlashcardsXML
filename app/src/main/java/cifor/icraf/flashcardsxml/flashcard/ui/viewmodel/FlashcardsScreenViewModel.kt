@@ -1,6 +1,5 @@
 package cifor.icraf.flashcardsxml.flashcard.ui.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import cifor.icraf.flashcardsxml.flashcard.domain.entity.FlashcardEntity
@@ -15,7 +14,7 @@ class FlashcardsScreenViewModel(
     val flashcards: MutableStateFlow<List<FlashcardEntity>> = MutableStateFlow(value = emptyList())
 
     init {
-       getAllFlashcards()
+        getAllFlashcards()
     }
 
     fun getAllFlashcards() {

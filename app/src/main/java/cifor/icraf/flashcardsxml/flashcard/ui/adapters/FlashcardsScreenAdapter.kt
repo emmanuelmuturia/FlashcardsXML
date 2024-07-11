@@ -4,25 +4,22 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import cifor.icraf.flashcardsxml.R
 import cifor.icraf.flashcardsxml.flashcard.domain.entity.FlashcardEntity
+import cifor.icraf.flashcardsxml.flashcard.ui.diffutil.FlashcardDiffItemCallback
 
-class FlashcardsScreenAdapter : RecyclerView.Adapter<FlashcardsScreenAdapter.FlashcardsScreenViewHolder>() {
-
-    var flashcards = listOf<FlashcardEntity>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
-
-    override fun getItemCount(): Int = flashcards.size
+class FlashcardsScreenAdapter :
+    ListAdapter<FlashcardEntity, FlashcardsScreenAdapter.FlashcardsScreenViewHolder>(
+        FlashcardDiffItemCallback()
+    ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlashcardsScreenViewHolder =
         FlashcardsScreenViewHolder.inflateFrom(parent = parent)
 
     override fun onBindViewHolder(holder: FlashcardsScreenViewHolder, position: Int) {
-        val item = flashcards[position]
+        val item = getItem(position)
         holder.bind(item = item)
     }
 

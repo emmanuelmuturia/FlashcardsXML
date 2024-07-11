@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.coroutineScope
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import cifor.icraf.flashcardsxml.databinding.FragmentHomeScreenBinding
@@ -36,9 +35,9 @@ class SubjectHomeScreenFragment : Fragment() {
             false
         )
 
-       if (activity is AppCompatActivity) {
-           (activity as AppCompatActivity).setSupportActionBar(binding.homeScreenToolbar)
-       }
+        if (activity is AppCompatActivity) {
+            (activity as AppCompatActivity).setSupportActionBar(binding.homeScreenToolbar)
+        }
 
         binding.addSubjectButton.setOnClickListener {
             val navigationAction = SubjectHomeScreenFragmentDirections.navigateToSubjectEditScreen()
@@ -62,7 +61,7 @@ class SubjectHomeScreenFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             flashcardsXMLViewModel.subjectUIState.collect { subjectUIState ->
-                homeScreenAdapter.data = subjectUIState.subjects
+                homeScreenAdapter.submitList(subjectUIState.subjects)
             }
         }
 
