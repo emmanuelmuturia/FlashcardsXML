@@ -40,9 +40,6 @@ class SubjectEditScreenFragmentTest {
 
     @Test
     fun toolBarHasClickableButtons() {
-        onView(withId(R.id.subjectEditScreenToolbar)).check(matches(hasDescendant((withId(R.id.subjectEditScreenBackButton)))))
-            .perform(click())
-
         onView(withId(R.id.subjectEditScreenToolbar)).check(matches(hasDescendant(withId(R.id.subjectEditScreenDoneButton))))
             .perform(
                 click()

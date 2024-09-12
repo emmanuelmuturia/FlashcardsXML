@@ -72,8 +72,6 @@ class SubjectHomeScreenFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        binding.subjectList.adapter = null
-        viewLifecycleOwner.lifecycleScope.coroutineContext.cancelChildren()
     }
 
 }

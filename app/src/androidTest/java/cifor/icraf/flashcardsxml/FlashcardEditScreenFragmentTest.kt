@@ -38,9 +38,6 @@ class FlashcardEditScreenFragmentTest {
 
     @Test
     fun toolBarHasClickableButtons() {
-        onView(withId(R.id.flashcardsEditScreenTopAppBar)).check(matches(hasDescendant((withId(R.id.flashcardsEditScreenBackButton)))))
-            .perform(click())
-
         onView(withId(R.id.flashcardsEditScreenTopAppBar)).check(matches(hasDescendant(withId(R.id.flashcardsEditScreenDoneButton))))
             .perform(
                 click()
