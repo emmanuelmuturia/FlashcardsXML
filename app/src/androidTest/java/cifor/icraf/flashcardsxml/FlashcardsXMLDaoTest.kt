@@ -1,4 +1,3 @@
-/*
 package cifor.icraf.flashcardsxml
 
 import androidx.room.Room
@@ -108,4 +107,4 @@ class FlashcardsXMLDaoTest {
     fun closeLocalDatabase() {
         flashcardsLocalDatabase.close()
     }
-}*/
+}
