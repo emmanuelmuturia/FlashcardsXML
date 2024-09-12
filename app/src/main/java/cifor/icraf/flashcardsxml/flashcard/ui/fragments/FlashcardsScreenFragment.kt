@@ -56,10 +56,6 @@ class FlashcardsScreenFragment : Fragment() {
             }
         }
 
-        binding.flashcardsScreenBackButton.setOnClickListener {
-            this.findNavController().navigateUp()
-        }
-
         binding.addFlashcardButton.setOnClickListener {
             val navigationAction =
                 FlashcardsScreenFragmentDirections.navigateToFlashcardsEditScreen(
@@ -77,8 +73,6 @@ class FlashcardsScreenFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        binding.flashcardsList.adapter = null
-        viewLifecycleOwner.lifecycleScope.coroutineContext.cancelChildren()
     }
 
 }
