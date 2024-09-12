@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/md_theme_background"
     >
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -29,6 +30,9 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editTextSubjectName"
+        android:backgroundTint="@color/md_theme_onBackground"
+        android:textColor="@color/md_theme_onBackground"
+        android:textColorHint="@color/md_theme_onBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="21dp"

@@ -28,7 +28,6 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@color/md_theme_onSurface"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textAlignment="center"
