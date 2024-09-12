@@ -77,8 +77,6 @@ class FlashcardsScreenFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        binding.flashcardsList.adapter = null
-        viewLifecycleOwner.lifecycleScope.coroutineContext.cancelChildren()
     }
 
 }

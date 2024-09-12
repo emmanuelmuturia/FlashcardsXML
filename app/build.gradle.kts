@@ -64,12 +64,13 @@ dependencies {
 
     testImplementation(dependencyNotation = libs.junit)
 
-    testImplementation(dependencyNotation = libs.test.coroutines)
+    //testImplementation(dependencyNotation = libs.test.coroutines)
     testImplementation(dependencyNotation = libs.test.mockK)
 
     debugImplementation(dependencyNotation = libs.leakcanary.android)
     debugImplementation(dependencyNotation = libs.fragment.testing.manifest)
 
+    androidTestImplementation(dependencyNotation = libs.test.coroutines)
     androidTestImplementation(dependencyNotation = libs.fragment.testing)
     androidTestImplementation(dependencyNotation = libs.androidx.junit)
     androidTestImplementation(dependencyNotation = libs.androidx.espresso.core)

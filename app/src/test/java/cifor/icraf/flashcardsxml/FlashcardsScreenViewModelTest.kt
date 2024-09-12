@@ -40,7 +40,7 @@ class FlashcardsScreenViewModelTest {
             FlashcardEntity(
                 flashcardSubjectName = "Android",
                 flashCardTerm = "Android",
-                flashCardDefinition = "Android is a mobile ope-rating system developed by Google."
+                flashCardDefinition = "Android is a mobile operating system developed by Google."
             ),
             FlashcardEntity(
                 flashcardSubjectName = "Android",
