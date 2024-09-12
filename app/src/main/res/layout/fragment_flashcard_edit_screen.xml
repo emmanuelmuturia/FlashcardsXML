@@ -50,6 +50,9 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/flashcardDefinitionEditText"
+        android:backgroundTint="@color/md_theme_onBackground"
+        android:textColor="@color/md_theme_onBackground"
+        android:textColorHint="@color/md_theme_onBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="21dp"
