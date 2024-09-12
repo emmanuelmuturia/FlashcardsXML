@@ -47,7 +47,8 @@
         android:contentDescription="@string/add_new_subject_button"
         android:padding="14dp"
         android:src="@drawable/ic_add"
-        android:tint="@color/md_theme_primary"
+        android:tint="@color/md_theme_onPrimaryContainer"
+        android:backgroundTint="@color/md_theme_primaryContainer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

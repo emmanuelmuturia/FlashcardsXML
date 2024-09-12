@@ -20,6 +20,8 @@
         android:elevation="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:title="Flashcards"
+        app:titleTextColor="@color/md_theme_onBackground"
         app:navigationIcon="@drawable/ic_arrow_back"
         app:navigationIconTint="@color/md_theme_onBackground"
         >
@@ -54,6 +56,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flashcardsScreenTopAppBar"
         app:layout_constraintVertical_bias="1.0"
-        app:tint="@color/md_theme_primary" />
+        android:tint="@color/md_theme_onPrimaryContainer"
+        android:backgroundTint="@color/md_theme_primaryContainer"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
