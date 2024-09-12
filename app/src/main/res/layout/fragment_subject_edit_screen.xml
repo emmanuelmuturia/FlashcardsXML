@@ -1,7 +1,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/subjectEditScreenToolbar"
@@ -23,17 +25,6 @@
         app:navigationIconTint="@color/md_theme_onBackground"
         >
 
-        <!-- Done Button -->
-        <Button
-            android:id="@+id/subjectEditScreenDoneButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginRight="21dp"
-            android:contentDescription="Done"
-            android:src="@drawable/ic_done"
-            app:tint="@color/md_theme_onBackground" />
-
     </com.google.android.material.appbar.MaterialToolbar>
 
     <com.google.android.material.textfield.TextInputEditText
@@ -50,5 +41,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subjectEditScreenToolbar"
         app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/subjectEditScreenDoneButton"
+        android:padding="14dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|center_vertical"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="Done"
+        android:src="@drawable/ic_done"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:tint="@color/md_theme_onPrimaryContainer"
+        android:backgroundTint="@color/md_theme_primaryContainer"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

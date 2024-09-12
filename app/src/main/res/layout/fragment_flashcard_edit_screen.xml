@@ -28,16 +28,6 @@
         app:navigationIconTint="@color/md_theme_onBackground"
         >
 
-        <ImageButton
-            android:id="@+id/flashcardsEditScreenDoneButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginRight="21dp"
-            android:contentDescription="Done"
-            android:src="@drawable/ic_done"
-            app:tint="@color/md_theme_onBackground"  />
-
     </com.google.android.material.appbar.MaterialToolbar>
 
     <com.google.android.material.textfield.TextInputEditText
@@ -67,5 +57,19 @@
         app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/flashcardsEditScreenDoneButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|center_vertical"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="Done"
+        android:src="@drawable/ic_done"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:tint="@color/md_theme_onPrimaryContainer"
+        android:backgroundTint="@color/md_theme_primaryContainer"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
