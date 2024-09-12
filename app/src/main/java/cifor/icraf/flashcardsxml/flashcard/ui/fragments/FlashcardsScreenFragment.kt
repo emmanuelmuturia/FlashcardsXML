@@ -56,10 +56,6 @@ class FlashcardsScreenFragment : Fragment() {
             }
         }
 
-        binding.flashcardsScreenBackButton.setOnClickListener {
-            this.findNavController().navigateUp()
-        }
-
         binding.addFlashcardButton.setOnClickListener {
             val navigationAction =
                 FlashcardsScreenFragmentDirections.navigateToFlashcardsEditScreen(

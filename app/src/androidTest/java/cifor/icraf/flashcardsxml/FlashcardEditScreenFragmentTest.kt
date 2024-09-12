@@ -24,20 +24,6 @@ class FlashcardEditScreenFragmentTest {
     }
 
     @Test
-    fun flashcardEditScreenFragmentToolBarHasClickableButtons() {
-        launchFragmentInContainer<FlashcardEditScreenFragment>(
-            themeResId = R.style.AppTheme
-        )
-        onView(withId(R.id.flashcardsEditScreenTopAppBar)).check(matches(hasDescendant((withId(R.id.flashcardsEditScreenBackButton)))))
-            .perform(click())
-
-        onView(withId(R.id.flashcardsEditScreenTopAppBar)).check(matches(hasDescendant(withId(R.id.flashcardsEditScreenDoneButton))))
-            .perform(
-                click()
-            )
-    }
-
-    @Test
     fun flashcardEditScreenFragmentTextViewsExist() {
         launchFragmentInContainer<FlashcardEditScreenFragment>(
             themeResId = R.style.AppTheme

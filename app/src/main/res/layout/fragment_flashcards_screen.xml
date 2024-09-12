@@ -19,16 +19,12 @@
         android:contentInsetStartWithNavigation="0dp"
         android:elevation="4dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <!-- Navigation Icon (Back Button) -->
-        <ImageButton
-            android:id="@+id/flashcardsScreenBackButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="Arrow Back"
-            android:src="@drawable/ic_arrow_back"
-            app:tint="@color/md_theme_primary" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Flashcards"
+        app:titleTextColor="@color/md_theme_onBackground"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/md_theme_onBackground"
+        >
 
     </com.google.android.material.appbar.MaterialToolbar>
 
@@ -43,7 +39,9 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:background="@color/md_theme_background"
+        />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addFlashcardButton"
@@ -58,6 +56,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flashcardsScreenTopAppBar"
         app:layout_constraintVertical_bias="1.0"
-        app:tint="@color/md_theme_primary" />
+        android:tint="@color/md_theme_onPrimaryContainer"
+        android:backgroundTint="@color/md_theme_primaryContainer"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

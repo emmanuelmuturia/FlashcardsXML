@@ -25,22 +25,6 @@ class SubjectEditScreenFragmentTest {
     }
 
     @Test
-    fun subjectEditScreenFragmentToolBarHasClickableButtons() {
-
-        launchFragmentInContainer<SubjectEditScreenFragment>(
-            themeResId = R.style.AppTheme
-        )
-
-        onView(withId(R.id.subjectEditScreenToolbar)).check(matches(hasDescendant((withId(R.id.subjectEditScreenBackButton)))))
-            .perform(click())
-
-        onView(withId(R.id.subjectEditScreenToolbar)).check(matches(hasDescendant(withId(R.id.subjectEditScreenDoneButton))))
-            .perform(
-                click()
-            )
-    }
-
-    @Test
     fun subjectEditScreenFragmentTextViewExists() {
         launchFragmentInContainer<SubjectEditScreenFragment>(
             themeResId = R.style.AppTheme

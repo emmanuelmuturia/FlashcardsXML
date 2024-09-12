@@ -1,7 +1,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/md_theme_background"
+    >
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/subjectEditScreenToolbar"
@@ -16,31 +19,20 @@
         android:contentInsetStartWithNavigation="0dp"
         android:elevation="4dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageButton
-            android:id="@+id/subjectEditScreenBackButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="Arrow Back"
-            android:src="@drawable/ic_arrow_back"
-            app:tint="@color/md_theme_onBackground" />
-
-        <!-- Done Button -->
-        <ImageButton
-            android:id="@+id/subjectEditScreenDoneButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginRight="21dp"
-            android:contentDescription="Done"
-            android:src="@drawable/ic_done"
-            app:tint="@color/md_theme_onBackground" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Edit Subject"
+        app:titleTextColor="@color/md_theme_onBackground"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/md_theme_onBackground"
+        >
 
     </com.google.android.material.appbar.MaterialToolbar>
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editTextSubjectName"
+        android:backgroundTint="@color/md_theme_onBackground"
+        android:textColor="@color/md_theme_onBackground"
+        android:textColorHint="@color/md_theme_onBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="21dp"
@@ -53,5 +45,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subjectEditScreenToolbar"
         app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/subjectEditScreenDoneButton"
+        android:padding="14dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|center_vertical"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="Done"
+        android:src="@drawable/ic_done"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:tint="@color/md_theme_onPrimaryContainer"
+        android:backgroundTint="@color/md_theme_primaryContainer"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

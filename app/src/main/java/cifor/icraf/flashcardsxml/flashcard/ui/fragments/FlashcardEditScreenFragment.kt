@@ -32,10 +32,6 @@ class FlashcardEditScreenFragment : Fragment() {
             false
         )
 
-        binding.flashcardsEditScreenBackButton.setOnClickListener {
-            this.findNavController().navigateUp()
-        }
-
         if (activity is AppCompatActivity) {
             (activity as AppCompatActivity).setSupportActionBar(binding.flashcardsEditScreenTopAppBar)
         }
