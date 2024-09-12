@@ -74,18 +74,21 @@ FlashcardsXML was developed as a PoC in preparation for the next projects done i
 
 ## Tests
 
-| Test                                                              | Description                                    |
-|-------------------------------------------------------------------|------------------------------------------------|
-| ![The ViewModel Test]() | This is the FlashcardsScreen ViewModel Test... |
-| ![The ViewModel Test]() | This is the Flashcards XML ViewModel Test...   |
-| ![The DAO Test]()             | This is the DAO Test...                        |
-| ![The UI Tests]()             | These are the UI Tests...                      |
+| Test                                                                                        | Description                                      |
+|---------------------------------------------------------------------------------------------|--------------------------------------------------|
+| ![Screen ViewModel Test](assets/screenshots/test/screen_viewmodel_test.png)                 | This is the FlashcardsScreen ViewModel Test...   |
+| ![ViewModel Test](assets/screenshots/test/viewmodel_test.png)                               | This is the Flashcards XML ViewModel Test...     |
+| ![DAO Test](assets/screenshots/test/dao_test.png)                                           | This is the DAO Test...                          |
+| ![SubjectHomeScreenFragment Test](assets/screenshots/test/subject_home_screen_test.png)     | These is the SubjectHomeScreenFragment Test...   |
+| ![SubjectEditScreenFragment Test](assets/screenshots/test/subject_edit_screen_test.png)     | These is the SubjectEditScreenFragment Test...   |
+| ![FlashcardsScreenFragment Test](assets/screenshots/test/flashcards_screen_test.png)        | These is the FlashcardsScreenFragment Test...    |
+| ![FlashcardEditScreenFragment Test](assets/screenshots/test/flashcard_edit_screen_test.png) | These is the FlashcardEditScreenFragment Test... |
 
 ## Screenshots
 
-|                           Screenshot #1                           |                           Screenshot #2                           |                           Screenshot #3                           |
-|:-----------------------------------------------------------------:|:-----------------------------------------------------------------:|:-----------------------------------------------------------------:|
-| ![Screenshot #1](assets/app_screenshots/objects_screenshot_1.png) | ![Screenshot #2](assets/app_screenshots/objects_screenshot_2.png) | ![Screenshot #3](assets/app_screenshots/objects_screenshot_3.png) |
+|                          Subject Home Screen                           |                          Subject Edit Screen                           |                         Flashcards Screen                          |                           Flashcard Edit Screen                            |
+|:----------------------------------------------------------------------:|:----------------------------------------------------------------------:|:------------------------------------------------------------------:|:--------------------------------------------------------------------------:|
+| ![Subject Home Screen](assets/screenshots/app/subject_home_screen.png) | ![Subject Edit Screen](assets/screenshots/app/subject_edit_screen.png) | ![Flashcards Screen](assets/screenshots/app/flashcards_screen.png) | ![Flashcard Edit Screen](assets/screenshots/app/flashcard_edit_screen.png) |
 
 ### Demo
 
